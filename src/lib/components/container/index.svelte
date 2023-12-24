@@ -1,9 +1,9 @@
-<script lang="ts">
-	let className: string = '';
-
-	export { className as class };
-</script>
-
-<div class="container mx-auto px-2 {className}">
+<div class="wrapper {$$props.class}">
 	<slot />
 </div>
+
+<style lang="postcss">
+	.wrapper {
+		@apply container mx-auto px-2;
+	}
+</style>
