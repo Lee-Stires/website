@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "SerpentineDBol";
+    src: url(https://pub-46d80d483bae47afbc1dfab994959dfb.r2.dev/SERPNTB.TTF);
+}
