@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
 	import { browser } from '$app/environment';
+	import { page } from '$app/stores';
+	
 	let menuIsOpen = false;
 
 	const toggleMenu = () => {
@@ -13,6 +15,33 @@
 			menuIsOpen = window.innerWidth > 1024 && true;
 		});
 	}
+	
+	const navLinks = [
+		{
+			title: 'Home',
+			url: '/'
+		},
+		{
+			title: 'About',
+			url: '/about'
+		},
+		{
+			title: 'Services',
+			url: '/services'
+		},
+		{
+			title: 'Gallery',
+			url: '/gallery'
+		},
+		{
+			title: 'Contact',
+			url: '/contact'
+		},
+		{
+			title: 'Careers',
+			url: '/careers'
+		}
+	];
 </script>
 
 <header class="container">
@@ -24,12 +53,9 @@
 	{#if menuIsOpen}
 		<nav transition:slide>
 			<ul>
-				<li class="active"><a href="/">Home</a></li>
-				<li><a href="/about">About</a></li>
-				<li><a href="/services">Services</a></li>
-				<li><a href="/gallery">Gallery</a></li>
-				<li><a href="/contact">Contact</a></li>
-				<li><a href="/careers">Careers</a></li>
+				{#each navLinks as link}
+						<li class:active={$page.url.pathname === link.url}><a href={link.url}>{link.title}</a></li>
+				{/each}
 			</ul>
 		</nav>
 	{/if}
