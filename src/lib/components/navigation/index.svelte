@@ -24,12 +24,12 @@
 	{#if menuIsOpen}
 		<nav transition:slide>
 			<ul>
-				<li class="active">Home</li>
-				<li>About</li>
-				<li>Services</li>
-				<li>Gallery</li>
-				<li>Contact</li>
-				<li>Careers</li>
+				<li class="active"><a href="/">Home</a></li>
+				<li><a href="/about">About</a></li>
+				<li><a href="/services">Services</a></li>
+				<li><a href="/gallery">Gallery</a></li>
+				<li><a href="/contact">Contact</a></li>
+				<li><a href="/careers">Careers</a></li>
 			</ul>
 		</nav>
 	{/if}
@@ -39,6 +39,8 @@
 	.logo {
 		@apply mt-10 text-center text-5xl font-bold uppercase text-primary drop-shadow-[5px_10px_10px_#000];
 
+		font-family: 'SerpentineDBol', serif;
+
 		@screen md {
 			@apply text-9xl;
 		}
@@ -47,7 +49,7 @@
 	nav ul {
 		@apply text-center text-2xl;
 
-		@screen md {
+		@screen lg {
 			@apply mt-20 flex justify-center gap-20 text-3xl;
 		}
 	}
@@ -63,7 +65,7 @@
 	.mobile-nav button {
 		@apply mt-10 w-full rounded-md bg-secondary p-4 text-white;
 
-		@screen md {
+		@screen lg {
 			@apply hidden;
 		}
 	}
