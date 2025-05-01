@@ -12,4 +12,8 @@
 	.images	{
 		@apply flex
 	}
+	
+	p {
+		@apply py-4;
+	}
 </style>
