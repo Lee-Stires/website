@@ -1,10 +1,4 @@
-<script lang="ts">
-	import { Navigation, Footer } from '$lib/components';
-</script>
-
-<Navigation />
-
-<img src="https://placehold.it/1440x750" alt="Cool" />
+<img src="https://place-hold.it/1440x750" alt="Cool" />
 
 <div class="container">
 	<h1>General Engineering Contractor</h1>
@@ -14,8 +8,6 @@
 		<p>DIR #1000007695</p>
 	</div>
 </div>
-
-<Footer />
 
 <style lang="postcss">
 	img {
