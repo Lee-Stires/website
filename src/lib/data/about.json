@@ -1,0 +1,28 @@
+{
+  "seo": {
+    "title": "Home | Lee & Stires",
+    "description": "Welcome to Lee & Stires.",
+    "ogType": "website"
+  },
+  "info": "Lee & Stires Inc. has been providing first class general engineering construction services to the Southern California area for over 55 years. We have provided site clearing / demolition, earthwork / grading, asphalt paving and many specialty services to a multitude of developers, general contractors, school districts and public agencies.",
+  "images": [
+    {
+      "src": "/image1.jpg",
+      "alt": "About Lee & Stires Inc."
+    },
+    {
+      "src": "/image2.jpg",
+      "alt": "About Lee & Stires Inc."
+    },
+    {
+      "src": "/image3.jpg",
+      "alt": "About Lee & Stires Inc."
+    }
+  ],
+  "equipment": "All equipment is company owned, is well maintained, and in compliance with all state regulations. Our equipment meets or exceeds requirements set forth by the South Coast Air Quality Management District (AQMD).",
+  "license": "Lee & Stires, Inc. is bondable, insured, and licensed as a general contractor with “A” and “C 12” licenses, California Contractors License Number 288402. The Contractor’s State License Board (CSLB) is the state consumer protection agency that licenses and regulates construction contractors. For more information regarding the CSLB, or to view our license information, please",
+  "link": {
+    "href": "/",
+    "title": "click here."
+  }
+}

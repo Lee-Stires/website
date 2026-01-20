@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Container } from '@/components';
+import aboutData from '@/lib/data/about.json';
+---
+
+<Layout>
+  <Container>
+    <p>
+      {aboutData.info}
+    </p>
+    <div>
+      <Picture />
+    </div>
+    <p>{aboutData.equipment}</p>
+    <p>
+      {aboutData.license}
+      <a href={aboutData.link.href}>{aboutData.link.title}</a>
+    </p>
+  </Container>
+</Layout>
