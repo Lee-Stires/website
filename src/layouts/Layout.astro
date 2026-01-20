@@ -1,0 +1,14 @@
+---
+import type { Props as SEOProps } from '@/components/SEO.astro';
+import BaseLayout from './BaseLayout.astro';
+
+interface Props extends SEOProps {}
+
+const { ...restProps }: Props = Astro.props;
+---
+
+<BaseLayout {...restProps}>
+  <main>
+    <slot />
+  </main>
+</BaseLayout>

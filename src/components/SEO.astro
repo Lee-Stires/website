@@ -1,0 +1,100 @@
+---
+import { SITE_CONFIG } from '@/lib/config/seo';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  noindex?: boolean;
+
+  ogTitle?: string;
+  ogDescription?: string;
+  ogType?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+
+  twitterTitle?: string;
+  twitterDescription?: string;
+  twitterImage?: string;
+
+  jsonLd?: Record<string, any>;
+}
+
+const {
+  title,
+  description,
+  canonical = Astro.url.href,
+  noindex = false,
+
+  ogTitle = title,
+  ogDescription = description,
+  ogType = 'website',
+  ogImage,
+  ogImageAlt,
+
+  twitterTitle = ogTitle,
+  twitterDescription = ogDescription,
+  twitterImage = ogImage,
+
+  jsonLd,
+}: Props = Astro.props;
+
+const robots = noindex ? 'noindex, nofollow' : 'index, follow';
+const siteUrl = Astro.site || SITE_CONFIG.siteUrl;
+
+function formatImage(path?: string) {
+  if (!path) return undefined;
+  try {
+    return new URL(path, siteUrl).href;
+  } catch (e) {
+    return path;
+  }
+}
+
+const fullOgImage = formatImage(ogImage);
+const fullTwitterImage = formatImage(twitterImage);
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content={robots} />
+<link rel="canonical" href={canonical} />
+
+{title && <title>{title}</title>}
+{description && <meta name="description" content={description} />}
+
+<meta name="theme-color" content={SITE_CONFIG.themeColor} />
+
+<meta property="og:site_name" content={SITE_CONFIG.siteName} />
+<meta property="og:url" content={canonical} />
+<meta property="og:type" content={ogType} />
+{ogTitle && <meta property="og:title" content={ogTitle} />}
+{ogDescription && <meta property="og:description" content={ogDescription} />}
+{fullOgImage && <meta property="og:image" content={fullOgImage} />}
+{ogImageAlt && <meta property="og:image:alt" content={ogImageAlt} />}
+
+<meta name="twitter:card" content="summary_large_image" />
+{
+  SITE_CONFIG.twitterSite !== '' && (
+  <meta name="twitter:site" content={SITE_CONFIG.twitterSite} />
+    )
+  }
+{twitterTitle && <meta name="twitter:title" content={twitterTitle} />}
+{
+  twitterDescription && (
+  <meta name="twitter:description" content={twitterDescription} />
+    )
+  }
+{fullTwitterImage && <meta name="twitter:image" content={fullTwitterImage} />}
+
+<link rel="icon" href="/favicon.ico" />
+
+{
+  jsonLd && (
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(jsonLd)}
+  />
+    )
+  }
