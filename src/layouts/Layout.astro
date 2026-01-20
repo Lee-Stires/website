@@ -1,7 +1,7 @@
 ---
 import type { Props as SEOProps } from '@/components/SEO.astro';
 import BaseLayout from './BaseLayout.astro';
-import { Navigation } from '@/components';
+import { Footer, Navigation } from '@/components';
 import '@fontsource-variable/dm-sans';
 
 interface Props extends SEOProps {}
@@ -11,8 +11,9 @@ const currentPath = Astro.url.pathname;
 ---
 
 <BaseLayout {...restProps}>
-  <Navigation path={currentPath} client:media="(min-width: 768px)" />
+  <Navigation path={currentPath} client:media="(max-width: 945px)" />
   <main>
     <slot />
   </main>
+  <Footer />
 </BaseLayout>
