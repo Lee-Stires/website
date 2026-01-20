@@ -2,7 +2,7 @@
   import { Container } from '@/components';
 </script>
 
-<footer class="@container mt-20">
+<footer class="mt-20">
   <Container>
     <p class="text-center text-5xl font-bold">General Engineering Contractor</p>
     <div class="mt-15 mb-4 flex flex-wrap items-center justify-around">
@@ -12,7 +12,7 @@
   </Container>
   <div class="w-full border-t-5 border-t-neutral-300">
     <Container
-      class="mt-10 flex flex-col justify-between text-center @lg:flex-row"
+      class="mt-10 flex flex-col justify-between text-center lg:flex-row"
     >
       <p>&copy; 2026 Lee &amp; Stires, Inc</p>
       <div class="text-center">
