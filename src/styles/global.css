@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+@font-face {
+    font-family: 'SerpentineDBol'; /* <--- Remember this name */
+    src: url('/fonts/SERPNTB.TTF') format('truetype');
+    font-display: swap;
+}
+
+@theme {
+    --color-primary: #D71003;
+    --color-secondary: #FFC300;
+
+    --font-brand: SerpentineDBol, Impact;
+    --font-sans: "DM Sans Variable", sans-serif;
+}
+
+@layer base {
+    body {
+        @apply text-neutral-900;
+    }
+}

@@ -1,1 +1,2 @@
-export { default as SEO } from './SEO.astro';
+export { default as Container } from './Container.svelte';
+export { default as Navigation } from './Navigation.svelte';
