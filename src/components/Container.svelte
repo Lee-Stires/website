@@ -9,6 +9,6 @@
   const { class: className = '', children }: Props = $props();
 </script>
 
-<div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 {className}">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 {className}">
   {@render children()}
 </div>
