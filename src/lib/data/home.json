@@ -1,10 +1,13 @@
 {
   "seo": {
-    "title": "Home",
+    "title": "Home | Lee & Stires",
     "description": "Welcome to Lee & Stires.",
     "ogType": "website"
   },
   "hero": {
-    "title": "Lee & Stires"
+    "image": {
+      "src": "/hero.png",
+      "alt": "Lee & Stires"
+    }
   }
 }

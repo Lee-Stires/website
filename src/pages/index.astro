@@ -1,12 +1,16 @@
 ---
 import { Layout } from '@/layouts';
 import homeData from '@/lib/data/home.json';
+import { Image } from 'astro:assets';
+import { Container } from '@/components';
 ---
 
 <Layout {...homeData.seo}>
-  <div class="grid min-h-screen place-items-center">
-    <h1 class="text-4xl font-bold tracking-tight text-slate-900">
-      {homeData.hero.title}
-    </h1>
-  </div>
+  <Container class="mt-10">
+    <Image
+      src={import.meta.env.PUBLIC_R2_URL + homeData.hero.image.src}
+      alt={homeData.hero.image.alt}
+      inferSize={true}
+    />
+  </Container>
 </Layout>
