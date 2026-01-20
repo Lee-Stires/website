@@ -1,0 +1,22 @@
+---
+import { type Props as SEOProps } from '@/components/SEO.astro';
+import { SEO } from '@/components';
+import '@/styles/global.css';
+
+interface Props extends SEOProps {
+  bodyClass?: string;
+}
+
+const { bodyClass, ...restProps }: Props = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <SEO {...restProps} />
+    <slot name="head" />
+  </head>
+  <body class={bodyClass}>
+    <slot />
+  </body>
+</html>
