@@ -30,14 +30,14 @@
 
     <button
       onclick={() => (mobileMenuIsOpen = !mobileMenuIsOpen)}
-      class="bg-secondary mt-8 w-full py-4 text-white @md:hidden"
+      class="bg-secondary mt-8 w-full py-4 text-white @4xl:hidden"
     >
       Menu
     </button>
     {#if mobileMenuIsOpen}
       <div
         transition:slide
-        class="bg-secondary/80 flex w-full flex-col text-center"
+        class="bg-secondary/80 flex w-full flex-col text-center @4xl:hidden"
       >
         {#each navList as item}
           <a href={item.href} class="border-b border-b-white py-4 text-white"
@@ -46,7 +46,7 @@
         {/each}
       </div>
     {/if}
-    <nav>
+    <nav class="hidden @4xl:block">
       <ul class="mt-20 mb-10 flex justify-center gap-14">
         {#each navList as item}
           <li
