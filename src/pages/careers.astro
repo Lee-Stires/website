@@ -1,0 +1,66 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import careersData from '@/lib/data/careers.json';
+import { Container } from '@/components';
+import { Paperclip } from '@lucide/astro';
+
+// TODO: Add form submission handling
+---
+
+<Layout {...careersData.seo}>
+  <Container class="mt-10">
+    <h1 class="text-center text-xl font-bold md:text-3xl">
+      {careersData.heading}
+    </h1>
+  </Container>
+
+  <div class="mt-10 w-full bg-gray-100 py-10 text-center">
+    {careersData.positions.map((position) => <p>{position}</p>)}
+    <a
+      class="bg-secondary mx-auto mt-4 block w-fit rounded-sm p-5"
+      target="_blank"
+      href={careersData.application}>Download Application</a
+    >
+  </div>
+
+  <Container>
+    <form class="mx-auto my-10 flex max-w-137.5 flex-col gap-4">
+      <label>
+        Full Name <span>*</span>
+        <input required type="text" />
+      </label>
+
+      <label>
+        Email Address <span>*</span>
+        <input required type="email" />
+      </label>
+
+      <label>
+        Phone Number <span>*</span>
+        <input required type="tel" />
+      </label>
+
+      <label>
+        Message
+        <textarea></textarea>
+      </label>
+
+      <div class="flex flex-col gap-4">
+        <label
+          for="resume-upload"
+          class="flex w-fit cursor-pointer items-center gap-2 rounded border border-gray-300 px-4 py-2 hover:bg-gray-50"
+        >
+          <input
+            type="file"
+            id="resume-upload"
+            name="application"
+            class="peer sr-only"
+          />
+          <Paperclip class="h-5 w-5" />
+          <span class="text-neutral-800">Attach File</span>
+        </label>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </Container>
+</Layout>

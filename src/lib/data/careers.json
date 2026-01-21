@@ -1,0 +1,16 @@
+{
+  "seo": {
+    "title": "Careers | Lee & Stires",
+    "description": "Lee & Stires careers page"
+  },
+  "heading": "Lee & Stires, Inc. is currently accepting applications for the following positions",
+  "positions": [
+    "Foreman",
+    "Grade Checkers",
+    "Operators",
+    "Laborers",
+    "Asphalt Rakers",
+    "Truck Drivers"
+  ],
+  "application": "/application.pdf"
+}
