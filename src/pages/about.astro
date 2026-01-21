@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Container } from '@/components';
+import aboutData from '@/lib/data/about.json';
+import R2Picture from '@/components/R2Picture.astro';
+---
+
+<Layout>
+  <Container class="mt-10">
+    <p>
+      {aboutData.info}
+    </p>
+    <div class="flex flex-col items-center my-8 lg:flex-row">
+      {
+        aboutData.images.map((image) => (
+          <R2Picture
+            src={image.src}
+            alt={image.alt}
+            height={243}
+            width={523}
+            2xl={490}
+            xl={406}
+            lg={320}
+            md={490}
+            sm={490}
+            base="min(calc(100vw - 2rem), 490px)"
+            class="w-full"
+          />
+        ))
+      }
+    </div>
+    <p class="mb-4">{aboutData.equipment}</p>
+    <p>
+      {aboutData.license}
+      <a class="underline" href={aboutData.link.href}>{aboutData.link.title}</a>
+    </p>
+  </Container>
+</Layout>

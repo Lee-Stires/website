@@ -1,25 +1,16 @@
 ---
 import { Layout } from '@/layouts';
 import homeData from '@/lib/data/home.json';
-import { Picture } from 'astro:assets';
 import { Container } from '@/components';
+import R2Picture from '@/components/R2Picture.astro';
 ---
 
 <Layout {...homeData.seo}>
   <Container class="mt-10">
-    <Picture
-      src={import.meta.env.PUBLIC_R2_URL + homeData.hero.image.src}
-      inferSize={true}
-      formats={['avif', 'webp']}
-      widths={[640, 768, 1024, 1280, 1536]}
-      sizes={`
-      (min-width: 1536px) 1536px,
-      (min-width: 1280px) 1280px,
-      (min-width: 1024px) 1024px,
-      (min-width: 768px) 768px,
-      (min-width: 640px) 640px,
-      calc(100vw - 2rem)
-    `}
+    <R2Picture
+      src={homeData.hero.image.src}
+      height={750}
+      width={1570}
       alt="Full container image"
       class="h-auto w-full"
       loading="eager"

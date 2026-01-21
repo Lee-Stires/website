@@ -1,0 +1,89 @@
+---
+import { Picture } from 'astro:assets';
+import { getR2Url } from '@/lib/utils/image';
+
+interface Props {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+  class?: string;
+  loading?: 'eager' | 'lazy';
+
+  sizes?: string; // Manual override
+
+  base?: number | string;
+  sm?: number;
+  md?: number;
+  lg?: number;
+  xl?: number;
+  '2xl'?: number;
+}
+
+const {
+  src,
+  width,
+  height,
+  alt,
+  class: className,
+  loading = 'lazy',
+  sizes: manualSizes,
+  base = 'calc(100vw - 2rem)',
+  sm,
+  md,
+  lg,
+  xl,
+  '2xl': xxl,
+} = Astro.props;
+
+const fullUrl = getR2Url(src);
+const fmt = (val: number | string) =>
+  typeof val === 'number' ? `${val}px` : val;
+
+/* --- 1. SIZES LOGIC --- */
+const autoSizesParts = [
+  `(min-width: 1536px) ${fmt(xxl ?? 1472)}`,
+  `(min-width: 1280px) ${fmt(xl ?? 1216)}`,
+  `(min-width: 1024px) ${fmt(lg ?? 960)}`,
+  `(min-width: 768px) ${fmt(md ?? 720)}`,
+  `(min-width: 640px) ${fmt(sm ?? 592)}`,
+  fmt(base),
+].filter(Boolean);
+
+const finalSizes = manualSizes ?? autoSizesParts.join(', ');
+
+/* --- 2. WIDTHS LOGIC --- */
+
+// Collect every width number you explicitly asked for
+const explicitWidths = [sm, md, lg, xl, xxl].filter(
+  (w) => typeof w === 'number',
+) as number[];
+
+let generatedWidths: number[];
+
+// Check for custom breakpoints
+if (explicitWidths.length > 0) {
+  const uniqueWidths = new Set([...explicitWidths, width]);
+  generatedWidths = Array.from(uniqueWidths);
+}
+// Fallback
+else {
+  const defaults = [640, 768, 1024, 1280, 1536];
+  generatedWidths = [...defaults.filter((w) => w < width), width];
+}
+
+// Always sort numerically for Astro
+generatedWidths.sort((a, b) => a - b);
+---
+
+<Picture
+  src={fullUrl}
+  width={width}
+  height={height}
+  widths={generatedWidths}
+  formats={['avif', 'webp']}
+  sizes={finalSizes}
+  alt={alt}
+  class={className}
+  loading={loading}
+/>

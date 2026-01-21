@@ -76,25 +76,42 @@ const fullTwitterImage = formatImage(twitterImage);
 <meta name="twitter:card" content="summary_large_image" />
 {
   SITE_CONFIG.twitterSite !== '' && (
-  <meta name="twitter:site" content={SITE_CONFIG.twitterSite} />
-    )
-  }
+    <meta name="twitter:site" content={SITE_CONFIG.twitterSite} />
+  )
+}
 {twitterTitle && <meta name="twitter:title" content={twitterTitle} />}
 {
   twitterDescription && (
-  <meta name="twitter:description" content={twitterDescription} />
-    )
-  }
+    <meta name="twitter:description" content={twitterDescription} />
+  )
+}
 {fullTwitterImage && <meta name="twitter:image" content={fullTwitterImage} />}
 
-<link rel="icon" href="/favicon.ico" />
+<link
+  rel="apple-touch-icon"
+  sizes="180x180"
+  href="favicon/apple-touch-icon.png"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="32x32"
+  href="favicon/favicon-32x32.png"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="16x16"
+  href="favicon/favicon-16x16.png"
+/>
+<link rel="manifest" href="favicon/site.webmanifest" />
 
 {
   jsonLd && (
-  <script
-    is:inline
-    type="application/ld+json"
-    set:html={JSON.stringify(jsonLd)}
-  />
-    )
-  }
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(jsonLd)}
+    />
+  )
+}
