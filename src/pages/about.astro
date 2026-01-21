@@ -5,7 +5,7 @@ import aboutData from '@/lib/data/about.json';
 import R2Picture from '@/components/R2Picture.astro';
 ---
 
-<Layout>
+<Layout {...aboutData.seo}>
   <Container class="mt-10">
     <p>
       {aboutData.info}
