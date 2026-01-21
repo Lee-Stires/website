@@ -9,24 +9,19 @@ import R2Picture from '@/components/R2Picture.astro';
 ---
 
 <Layout>
-  <Container class="mt-10">
-    <div class="lg:flex">
+  <Container class="my-10">
+    <div class="lg:grid lg:grid-cols-2 lg:gap-8 xl:grid-cols-3">
       {
         servicesData.services.map((service) => (
           <div class="mb-8 text-center">
             <h2 class="text-2xl font-bold">{service.name}</h2>
             <R2Picture
-              width={service.image.width}
-              height={service.image.height}
+              width={360}
+              height={195}
               src={service.image.src}
               alt={service.image.alt}
-              sm={592}
-              md={720}
-              lg={}
-              xl={}
-              2x={}
-              base="min(calc(100vw - 2rem), 490px)"
-              class="w-full h-97.5"
+              sizes="(min-width: 360px) 360px, 100vw"
+              class="mx-auto my-4 h-48.75 w-full max-w-90 object-cover"
             />
             <p>{service.description}</p>
           </div>
@@ -34,4 +29,28 @@ import R2Picture from '@/components/R2Picture.astro';
       }
     </div>
   </Container>
+  <div class="border-t-5 border-t-neutral-500 pt-10">
+    <Container>
+      <div class="text-center">
+        <h3 class="mb-4 text-2xl font-bold">
+          {servicesData.specialtyServices.title}
+        </h3>
+        <p>
+          {servicesData.specialtyServices.description}
+        </p>
+      </div>
+
+      <div class="flex justify-center">
+        <ul class="mt-4 w-full max-w-3xl gap-x-12 font-bold md:columns-2">
+          {
+            servicesData.specialtyServices.services.map((service) => (
+              <li class="relative mb-3 break-inside-avoid pl-5 text-left before:absolute before:top-0 before:left-0 before:text-gray-400 before:content-['-']">
+                {service}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </Container>
+  </div>
 </Layout>

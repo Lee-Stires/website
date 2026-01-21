@@ -31,7 +31,7 @@
       "description": "Asphalt paving services include private streets, public streets, parking lots, school sites and restoration of existing paved areas."
     }
   ],
-  "otherServices": {
+  "specialtyServices": {
     "title": "Specialty Services",
     "description": "Specialty services can be provided upon request. These services include but are not limited to the following:",
     "services": [
