@@ -1,0 +1,37 @@
+---
+import { Container } from '@/components';
+import Layout from '@/layouts/Layout.astro';
+import servicesData from '@/lib/data/services.json';
+import R2Picture from '@/components/R2Picture.astro';
+
+// TODO: Responsive styling
+// TODO: Added specialty services
+---
+
+<Layout>
+  <Container class="mt-10">
+    <div class="lg:flex">
+      {
+        servicesData.services.map((service) => (
+          <div class="mb-8 text-center">
+            <h2 class="text-2xl font-bold">{service.name}</h2>
+            <R2Picture
+              width={service.image.width}
+              height={service.image.height}
+              src={service.image.src}
+              alt={service.image.alt}
+              sm={592}
+              md={720}
+              lg={}
+              xl={}
+              2x={}
+              base="min(calc(100vw - 2rem), 490px)"
+              class="w-full h-97.5"
+            />
+            <p>{service.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</Layout>

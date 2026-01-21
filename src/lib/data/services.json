@@ -1,0 +1,49 @@
+{
+  "services": [
+    {
+      "name": "Site Clearing & Demolition",
+      "image": {
+        "width": 1628,
+        "height": 884,
+        "src": "demolition.jpg",
+        "alt": "Site Clearing & Demolition"
+      },
+      "description": "From small-scale clearing projects to major structure demolition projects, we can handle every phase with precision, safety and efficiency."
+    },
+    {
+      "name": "Earthwork",
+      "image": {
+        "width": 4032,
+        "height": 3024,
+        "src": "/earthwork.png",
+        "alt": "Earth Work"
+      },
+      "description": "Earthwork for mass grading, rough grading & finish grading using advanced technology, maintained equipment and experienced operators."
+    },
+    {
+      "name": "Asphalt Paving",
+      "image": {
+        "width": 4032,
+        "height": 3024,
+        "src": "paving.png",
+        "alt": "Asphalt Paving"
+      },
+      "description": "Asphalt paving services include private streets, public streets, parking lots, school sites and restoration of existing paved areas."
+    }
+  ],
+  "otherServices": {
+    "title": "Specialty Services",
+    "description": "Specialty services can be provided upon request. These services include but are not limited to the following:",
+    "services": [
+      "Site Concrete",
+      "Fog Seal, Seal Coat & Slurry Seal",
+      "Stripping & Signage",
+      "Stabilized Subgrade - Cement Treated Soil / Base, Lime Treatment, Etc.",
+      "Wet Utilities",
+      "Sewer, Water & Storm Drain",
+      "Dry Utilities",
+      "Block Walls",
+      "Fencing - Chain Link & Wrought Iron"
+    ]
+  }
+}
