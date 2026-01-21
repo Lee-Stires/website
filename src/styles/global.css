@@ -19,7 +19,30 @@
 }
 
 @layer base {
+
     body {
-        @apply text-neutral-900;
+        @apply text-neutral-900 bg-white;
+    }
+
+    button[type="submit"] {
+        @apply text-neutral-900 bg-secondary py-5 border-b-5 border-b-primary font-bold rounded-xl mb-10;
+
+        &:active {
+            @apply translate-y-1.25 border-b-0 border-t-5 border-t-white;
+        }
+    }
+}
+
+@layer components {
+    input, select, textarea {
+        @apply rounded-md w-full block border border-neutral-300 text-xl p-4;
+    }
+
+    input, select {
+        @apply border-l-secondary border-l-5;
+    }
+
+    label span {
+       @apply text-red-700
     }
 }
