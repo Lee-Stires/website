@@ -1,9 +1,13 @@
 @import "tailwindcss";
 
 @font-face {
-    font-family: 'SerpentineDBol'; /* <--- Remember this name */
-    src: url('/fonts/SERPNTB.TTF') format('truetype');
+    font-family: 'SerpentineDBol';
+    src: url('/fonts/serpentine-bold.woff2') format('woff2'),
+    url('/fonts/serpentine-bold.woff') format('woff'),
+    url('/fonts/serpentine-bold.ttf') format('truetype');
     font-display: swap;
+    font-weight: bold;
+    font-style: normal;
 }
 
 @theme {
