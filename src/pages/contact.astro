@@ -1,0 +1,91 @@
+---
+import { Container } from '@/components';
+import Layout from '@/layouts/Layout.astro';
+import { MapPin, Phone, Printer } from '@lucide/astro';
+import contactData from '@/lib/data/contact.json';
+
+// TODO: Added form submit functionality
+---
+
+<Layout>
+  <Container class="mt-20 lg:flex lg:justify-between">
+    <div>
+      <!-- General Contact -->
+      <div>
+        <h3 class="mb-8 text-2xl font-bold">Contact Us</h3>
+        <div class="info">
+          <MapPin class="mr-2 h-6 w-6" />
+          <p>{contactData.address}</p>
+        </div>
+
+        <div class="info">
+          <Phone class="mr-2 h-6 w-6" />
+          <p>{contactData.phone}</p>
+        </div>
+
+        <div class="info">
+          <Printer class="mr-2 h-6 w-6" />
+          <p>{contactData.fax}</p>
+        </div>
+      </div>
+
+      <!-- Emails -->
+      <div class="mt-8 space-y-2 lg:mt-40">
+        {
+          contactData.emails.map((item) => (
+            <p>
+              {item.name}:{' '}
+              <a class="underline" href={`mailto:${item.email}`}>
+                {item.email}
+              </a>
+            </p>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Form -->
+    <form class="mt-10 flex flex-col gap-5 lg:w-1/2">
+      <label>
+        Full Name <span>*</span>
+        <input required name="name" id="name" type="text" />
+      </label>
+
+      <label>
+        Email Address <span>*</span>
+        <input required name="name" id="name" type="text" />
+      </label>
+
+      <label>
+        Phone Number
+        <input name="name" id="name" type="tel" />
+      </label>
+
+      <label>
+        Select Inquiry Type <span>*</span>
+        <select>
+          {
+            contactData.emails.map((email) => (
+              <option value={email.email}>{email.name}</option>
+            ))
+          }
+        </select>
+      </label>
+
+      <label>
+        Your Message <span>*</span>
+        <textarea required minlength={10} class="min-h-50"></textarea>
+      </label>
+
+      <button type="submit">Submit</button>
+    </form>
+  </Container>
+</Layout>
+
+<style>
+  @reference 'tailwindcss';
+
+  .info {
+    @apply mb-5 flex items-center rounded-2xl border border-neutral-400 p-5 sm:w-3/4 lg:w-fit;
+  }
+</style>
