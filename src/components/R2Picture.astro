@@ -1,0 +1,76 @@
+---
+import { Picture } from 'astro:assets';
+import { getR2Url } from '@/lib/utils/image';
+
+interface Props {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+
+  class?: string;
+  loading?: 'eager' | 'lazy';
+
+  base?: number | string; // Mobile (default)
+  sm?: number; // 640px+
+  md?: number; // 768px+
+  lg?: number; // 1024px+
+  xl?: number; // 1280px+
+  '2xl'?: number; // 1536px+
+}
+
+const {
+  src,
+  width,
+  height,
+  alt,
+  class: className,
+  loading = 'lazy',
+  base = 'calc(100vw - 2rem)',
+  sm,
+  md,
+  lg,
+  xl,
+  '2xl': xxl,
+} = Astro.props;
+
+const fullUrl = getR2Url(src);
+
+const fmt = (val: number | string) =>
+  typeof val === 'number' ? `${val}px` : val;
+const sizesParts = [
+  // 2XL: 1536px - px-8 (64px) = 1472px
+  `(min-width: 1536px) ${fmt(xxl ?? 1472)}`,
+
+  // XL: 1280px - px-8 (64px) = 1216px
+  `(min-width: 1280px) ${fmt(xl ?? 1216)}`,
+
+  // LG: 1024px - px-8 (64px) = 960px
+  `(min-width: 1024px) ${fmt(lg ?? 960)}`,
+
+  // MD: 768px - px-6 (48px) = 720px
+  `(min-width: 768px) ${fmt(md ?? 720)}`,
+
+  // SM: 640px - px-6 (48px) = 592px
+  `(min-width: 640px) ${fmt(sm ?? 592)}`,
+
+  // Base Fallback
+  fmt(base),
+];
+
+const sizesString = sizesParts.join(', ');
+
+const standardWidths = [640, 768, 1024, 1280, 1536, width];
+---
+
+<Picture
+  src={fullUrl}
+  width={width}
+  height={height}
+  widths={standardWidths}
+  formats={['avif', 'webp']}
+  sizes={sizesString}
+  alt={alt}
+  class={className}
+  loading={loading}
+/>
