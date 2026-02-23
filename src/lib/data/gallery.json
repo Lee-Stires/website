@@ -1,0 +1,50 @@
+{
+  "seo": {
+    "title": "Gallery | Lee & Stires",
+    "description": "Construction gallery – earthwork, demolition, and paving projects."
+  },
+  "series": [
+    {
+      "id": "earthwork",
+      "name": "Earthwork",
+      "photos": [
+        {
+          "src": "https://images.unsplash.com/photo-1622082679766-c5912d9416eb?w=1200&auto=format&fit=crop",
+          "alt": "Heavy equipment at construction site"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1603814744174-115311ad645e?w=1200&auto=format&fit=crop",
+          "alt": "Excavator working on site"
+        }
+      ]
+    },
+    {
+      "id": "demolition",
+      "name": "Demolition",
+      "photos": [
+        {
+          "src": "https://images.unsplash.com/photo-1677588508537-5106322c2d40?w=1200&auto=format&fit=crop",
+          "alt": "Demolition equipment"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1603648641389-1fcc278f892a?w=1200&auto=format&fit=crop",
+          "alt": "Demolition site"
+        }
+      ]
+    },
+    {
+      "id": "paving",
+      "name": "Asphalt Paving",
+      "photos": [
+        {
+          "src": "https://images.unsplash.com/photo-1708117390188-d1547de962be?w=1200&auto=format&fit=crop",
+          "alt": "Paving and road work"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1708117242652-25dc76c4b30c?w=1200&auto=format&fit=crop",
+          "alt": "Asphalt paving machine"
+        }
+      ]
+    }
+  ]
+}
