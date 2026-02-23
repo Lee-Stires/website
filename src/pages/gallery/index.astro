@@ -1,0 +1,13 @@
+---
+import { Container, GalleryGrid } from '@/components';
+import Layout from '@/layouts/Layout.astro';
+import { getGalleryData } from '@/lib/data/gallery';
+
+const galleryData = getGalleryData();
+---
+
+<Layout {...galleryData.seo}>
+  <Container class="my-10">
+    <GalleryGrid series={galleryData.series} client:load />
+  </Container>
+</Layout>
