@@ -66,7 +66,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
 
   await resend.emails.send({
     from: 'Careers Form <server-noreply@phoenixtechlab.com>',
-    to: 'nplyley@gmail.com',
+    to: 'info@lee-stires.com',
     replyTo: email,
     subject: `New Job Application from ${name}`,
     text: [
