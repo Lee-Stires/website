@@ -45,7 +45,7 @@ import contactData from '@/lib/data/contact.json';
     </div>
 
     <!-- Form -->
-    <form class="mt-10 flex flex-col gap-5 lg:w-1/2">
+    <form method="POST" action="/api/contact" class="mt-10 flex flex-col gap-5 lg:w-1/2">
       <label>
         Full Name <span>*</span>
         <input required name="name" id="name" type="text" />
@@ -53,17 +53,17 @@ import contactData from '@/lib/data/contact.json';
 
       <label>
         Email Address <span>*</span>
-        <input required name="name" id="name" type="text" />
+        <input required name="email" id="email" type="email" />
       </label>
 
       <label>
         Phone Number
-        <input name="name" id="name" type="tel" />
+        <input name="phone" id="phone" type="tel" />
       </label>
 
       <label>
         Select Inquiry Type <span>*</span>
-        <select>
+        <select required name="to" id="to">
           {
             contactData.emails.map((email) => (
               <option value={email.email}>{email.name}</option>
@@ -74,7 +74,7 @@ import contactData from '@/lib/data/contact.json';
 
       <label>
         Your Message <span>*</span>
-        <textarea required minlength={10} class="min-h-50"></textarea>
+        <textarea required minlength={10} name="message" id="message" class="min-h-50"></textarea>
       </label>
 
       <button type="submit">Submit</button>
