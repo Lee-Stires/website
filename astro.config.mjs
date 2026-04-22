@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import { loadEnv } from 'vite';
 import svelte from '@astrojs/svelte';
+import vercel from '@astrojs/vercel';
 
 if (!process.env.NODE_ENV) {
   throw new Error('NODE_ENV must be set');
@@ -14,6 +15,8 @@ const r2Domain = new URL(env.PUBLIC_R2_URL).hostname;
 
 // https://astro.build/config
 export default defineConfig({
+  output: 'static',
+  adapter: vercel(),
   site: 'https://lee-stires.com',
 
   image: {
