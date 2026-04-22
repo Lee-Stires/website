@@ -1,0 +1,35 @@
+---
+import { Container } from '@/components';
+import Layout from '@/layouts/Layout.astro';
+---
+
+<Layout title="Application Submitted | Lee & Stires">
+  <Container class="mt-10 mb-20 text-center">
+    <h1 class="font-brand mb-4 text-6xl text-neutral-800 sm:text-7xl md:text-8xl">
+      Application Received
+    </h1>
+
+    <h3 class="mb-6 text-3xl font-bold text-neutral-700 uppercase sm:text-4xl">
+      Thank You for Your Interest
+    </h3>
+
+    <p class="mx-auto mb-10 max-w-2xl text-xl text-neutral-600">
+      We've received your application and will be in touch if your qualifications match our current openings.
+    </p>
+
+    <div class="flex flex-col justify-center gap-4 sm:flex-row">
+      <a
+        href="/"
+        class="bg-secondary hover:bg-opacity-90 px-8 py-4 text-xl font-bold tracking-wide text-white uppercase shadow-lg transition"
+      >
+        Return to Home
+      </a>
+      <a
+        href="/careers"
+        class="hover:border-secondary hover:text-secondary border-4 border-neutral-300 px-8 py-4 text-xl font-bold tracking-wide text-neutral-700 uppercase transition"
+      >
+        Back to Careers
+      </a>
+    </div>
+  </Container>
+</Layout>

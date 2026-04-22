@@ -24,25 +24,30 @@ import { Paperclip } from '@lucide/astro';
   </div>
 
   <Container>
-    <form class="mx-auto my-10 flex max-w-137.5 flex-col gap-4">
+    <form
+      method="POST"
+      action="/api/careers"
+      enctype="multipart/form-data"
+      class="mx-auto my-10 flex max-w-137.5 flex-col gap-4"
+    >
       <label>
         Full Name <span>*</span>
-        <input required type="text" />
+        <input required name="name" type="text" />
       </label>
 
       <label>
         Email Address <span>*</span>
-        <input required type="email" />
+        <input required name="email" type="email" />
       </label>
 
       <label>
         Phone Number <span>*</span>
-        <input required type="tel" />
+        <input required name="phone" type="tel" />
       </label>
 
       <label>
         Message
-        <textarea></textarea>
+        <textarea name="message"></textarea>
       </label>
 
       <div class="flex flex-col gap-4">
@@ -54,13 +59,51 @@ import { Paperclip } from '@lucide/astro';
             type="file"
             id="resume-upload"
             name="application"
+            accept=".pdf,application/pdf"
             class="peer sr-only"
           />
           <Paperclip class="h-5 w-5" />
-          <span class="text-neutral-800">Attach File</span>
+          <span id="file-label" class="text-neutral-800">Attach Resume (PDF, max 5MB)</span>
         </label>
+        <p id="file-error" class="hidden text-sm text-red-600"></p>
         <button type="submit">Submit</button>
       </div>
     </form>
   </Container>
+
+  <script>
+    const input = document.getElementById('resume-upload') as HTMLInputElement;
+    const label = document.getElementById('file-label') as HTMLSpanElement;
+    const error = document.getElementById('file-error') as HTMLParagraphElement;
+    const MAX_SIZE = 5 * 1024 * 1024;
+
+    input.addEventListener('change', () => {
+      const file = input.files?.[0];
+      error.textContent = '';
+      error.classList.add('hidden');
+
+      if (!file) {
+        label.textContent = 'Attach Resume (PDF, max 5MB)';
+        return;
+      }
+
+      if (file.type !== 'application/pdf') {
+        error.textContent = 'Only PDF files are accepted.';
+        error.classList.remove('hidden');
+        input.value = '';
+        label.textContent = 'Attach Resume (PDF, max 5MB)';
+        return;
+      }
+
+      if (file.size > MAX_SIZE) {
+        error.textContent = 'File exceeds the 5MB size limit.';
+        error.classList.remove('hidden');
+        input.value = '';
+        label.textContent = 'Attach Resume (PDF, max 5MB)';
+        return;
+      }
+
+      label.textContent = file.name;
+    });
+  </script>
 </Layout>
