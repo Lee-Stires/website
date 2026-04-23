@@ -9,7 +9,7 @@
       "name": "Earthwork",
       "photos": [
         {
-          "src": "https://images.unsplash.com/photo-1622082679766-c5912d9416eb?w=1200&auto=format&fit=crop",
+          "src": "https://www.lee-stires.com/_astro/earthwork_1KRPns.avif",
           "alt": "Heavy equipment at construction site"
         },
         {
@@ -23,7 +23,7 @@
       "name": "Demolition",
       "photos": [
         {
-          "src": "https://images.unsplash.com/photo-1677588508537-5106322c2d40?w=1200&auto=format&fit=crop",
+          "src": "https://www.lee-stires.com/_astro/demolition_Z1yMIEm.avif",
           "alt": "Demolition equipment"
         },
         {
@@ -37,12 +37,8 @@
       "name": "Asphalt Paving",
       "photos": [
         {
-          "src": "https://images.unsplash.com/photo-1708117390188-d1547de962be?w=1200&auto=format&fit=crop",
+          "src": "https://www.lee-stires.com/_astro/paving_Z1S4l9x.avif",
           "alt": "Paving and road work"
-        },
-        {
-          "src": "https://images.unsplash.com/photo-1708117242652-25dc76c4b30c?w=1200&auto=format&fit=crop",
-          "alt": "Asphalt paving machine"
         }
       ]
     }

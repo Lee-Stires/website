@@ -32,7 +32,7 @@ import R2Picture from '@/components/R2Picture.astro';
     <p class="mb-4">{aboutData.equipment}</p>
     <p>
       {aboutData.license}
-      <a class="underline" href={aboutData.link.href}>{aboutData.link.title}</a>
+      <a class="underline" target="_blank" referrerpolicy="no-referrer" href={aboutData.link.href}>{aboutData.link.title}</a>
     </p>
   </Container>
 </Layout>
