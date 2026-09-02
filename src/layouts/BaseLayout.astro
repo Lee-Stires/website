@@ -14,6 +14,11 @@ const { bodyClass, ...restProps }: Props = Astro.props;
   <head>
     <SEO {...restProps} />
     <slot name="head" />
+
+    <script
+      defer
+      src="https://analytics.phxlab.io/script.js"
+      data-website-id="16e482db-e399-4819-b49d-06a2185580a8"></script>
   </head>
   <body class={bodyClass}>
     <slot />
