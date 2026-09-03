@@ -31,11 +31,7 @@
     },
     {
       "_type": "text",
-      "body": "Lee & Stires, Inc. is bondable, insured, and licensed as a general contractor with “A” and “C 12” licenses, California Contractors License Number 288402. The Contractor’s State License Board (CSLB) is the state consumer protection agency that licenses and regulates construction contractors. For more information regarding the CSLB, or to view our license information, please",
-      "link": {
-        "text": "click here.",
-        "href": "https://www.cslb.ca.gov/OnlineServices/CheckLicenseII/LicenseDetail.aspx?LicNum=288402"
-      }
+      "body": "Lee & Stires, Inc. is bondable, insured, and licensed as a general contractor with “A” and “C 12” licenses, California Contractors License Number 288402. The Contractor’s State License Board (CSLB) is the state consumer protection agency that licenses and regulates construction contractors. For more information regarding the CSLB, or to view our license information, please [click here.](https://www.cslb.ca.gov/OnlineServices/CheckLicenseII/LicenseDetail.aspx?LicNum=288402)"
     }
   ]
 }

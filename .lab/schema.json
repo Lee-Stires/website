@@ -30,23 +30,8 @@
           "const": "text"
         },
         "body": {
-          "type": "string"
-        },
-        "link": {
-          "type": "object",
-          "properties": {
-            "text": {
-              "type": "string"
-            },
-            "href": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "text",
-            "href"
-          ],
-          "additionalProperties": false
+          "type": "string",
+          "format": "markdown"
         }
       },
       "required": [
