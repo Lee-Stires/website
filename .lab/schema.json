@@ -1,0 +1,291 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "_type": {
+          "type": "string",
+          "const": "hero"
+        },
+        "image": {
+          "type": "string"
+        },
+        "imageAlt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "_type",
+        "image",
+        "imageAlt"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "_type": {
+          "type": "string",
+          "const": "text"
+        },
+        "body": {
+          "type": "string"
+        },
+        "link": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            },
+            "href": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text",
+            "href"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "_type",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "_type": {
+          "type": "string",
+          "const": "imageGroup"
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "image": {
+                "type": "string"
+              },
+              "alt": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "image",
+              "alt"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "_type",
+        "images"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "_type": {
+          "type": "string",
+          "const": "services"
+        },
+        "services": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "image": {
+                "type": "string"
+              },
+              "imageAlt": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "description",
+              "image",
+              "imageAlt"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "_type",
+        "services"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "_type": {
+          "type": "string",
+          "const": "list"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "_type",
+        "title",
+        "description",
+        "items"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "_type": {
+          "type": "string",
+          "const": "gallery"
+        },
+        "series": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "photos": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "image": {
+                      "type": "string"
+                    },
+                    "alt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "image",
+                    "alt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "photos"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "_type",
+        "series"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "_type": {
+          "type": "string",
+          "const": "contact"
+        },
+        "heading": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "fax": {
+          "type": "string"
+        },
+        "emails": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "email"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "_type",
+        "heading",
+        "address",
+        "phone",
+        "fax",
+        "emails"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "_type": {
+          "type": "string",
+          "const": "careers"
+        },
+        "heading": {
+          "type": "string"
+        },
+        "positions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "applicationFile": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "_type",
+        "heading",
+        "positions",
+        "applicationFile"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}
