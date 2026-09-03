@@ -7,6 +7,7 @@ import { blockSchema } from '@/blocks/schema';
 const pages = defineCollection({
   loader: glob({ pattern: '*.json', base: './src/content/pages' }),
   schema: z.object({
+    name: z.string(),
     title: z.string(),
     description: z.string(),
     slug: z.string(),
