@@ -1,13 +1,12 @@
 ---
-import { Container, GalleryGrid } from '@/components';
-import Layout from '@/layouts/Layout.astro';
-import { getGalleryData } from '@/lib/data/gallery';
+import { getEntry } from 'astro:content';
+import BlockRenderer from '@/blocks/BlockRenderer.astro';
+import { Layout } from '@/layouts';
 
-const galleryData = getGalleryData();
+const page = await getEntry('pages', 'gallery');
+if (!page) throw new Error('Missing content: src/content/pages/gallery.json');
 ---
 
-<Layout {...galleryData.seo}>
-  <Container class="my-10">
-    <GalleryGrid series={galleryData.series} client:load />
-  </Container>
+<Layout title={page.data.title} description={page.data.description}>
+  <BlockRenderer blocks={page.data.blocks} />
 </Layout>

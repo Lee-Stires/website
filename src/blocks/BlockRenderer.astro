@@ -1,0 +1,17 @@
+---
+import type { Block } from './schema';
+import { registry } from './registry';
+
+interface Props {
+  blocks: Block[];
+}
+
+const { blocks }: Props = Astro.props;
+---
+
+{
+  blocks.map((block) => {
+    const Component = registry[block._type];
+    return <Component {...block} />;
+  })
+}

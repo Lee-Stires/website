@@ -1,0 +1,12 @@
+{
+  "title": "Home | Lee & Stires",
+  "description": "Welcome to Lee & Stires.",
+  "slug": "index",
+  "blocks": [
+    {
+      "_type": "hero",
+      "image": "/hero.jpg",
+      "imageAlt": "Lee & Stires"
+    }
+  ]
+}

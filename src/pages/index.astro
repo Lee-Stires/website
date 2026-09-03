@@ -1,19 +1,12 @@
 ---
+import { getEntry } from 'astro:content';
+import BlockRenderer from '@/blocks/BlockRenderer.astro';
 import { Layout } from '@/layouts';
-import homeData from '@/lib/data/home.json';
-import { Container } from '@/components';
-import R2Picture from '@/components/R2Picture.astro';
+
+const page = await getEntry('pages', 'index');
+if (!page) throw new Error('Missing content: src/content/pages/index.json');
 ---
 
-<Layout {...homeData.seo}>
-  <Container class="mt-10">
-    <R2Picture
-      src={homeData.hero.image.src}
-      height={750}
-      width={1570}
-      alt={homeData.hero.image.alt}
-      class="h-auto w-full"
-      loading="eager"
-    />
-  </Container>
+<Layout title={page.data.title} description={page.data.description}>
+  <BlockRenderer blocks={page.data.blocks} />
 </Layout>

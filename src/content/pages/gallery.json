@@ -1,0 +1,50 @@
+{
+  "title": "Gallery | Lee & Stires",
+  "description": "Construction gallery – earthwork, demolition, and paving projects.",
+  "slug": "gallery",
+  "blocks": [
+    {
+      "_type": "gallery",
+      "series": [
+        {
+          "id": "earthwork",
+          "name": "Earthwork",
+          "photos": [
+            {
+              "image": "https://www.lee-stires.com/_astro/earthwork_1KRPns.avif",
+              "alt": "Heavy equipment at construction site"
+            },
+            {
+              "image": "https://images.unsplash.com/photo-1603814744174-115311ad645e?w=1200&auto=format&fit=crop",
+              "alt": "Excavator working on site"
+            }
+          ]
+        },
+        {
+          "id": "demolition",
+          "name": "Demolition",
+          "photos": [
+            {
+              "image": "https://www.lee-stires.com/_astro/demolition_Z1yMIEm.avif",
+              "alt": "Demolition equipment"
+            },
+            {
+              "image": "https://images.unsplash.com/photo-1603648641389-1fcc278f892a?w=1200&auto=format&fit=crop",
+              "alt": "Demolition site"
+            }
+          ]
+        },
+        {
+          "id": "paving",
+          "name": "Asphalt Paving",
+          "photos": [
+            {
+              "image": "https://www.lee-stires.com/_astro/paving_Z1S4l9x.avif",
+              "alt": "Paving and road work"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

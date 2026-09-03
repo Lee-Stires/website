@@ -1,0 +1,39 @@
+---
+import Container from '@/components/Container.astro';
+import R2Picture from '@/components/R2Picture.astro';
+
+interface Props {
+  images: {
+    image: string;
+    alt: string;
+  }[];
+}
+
+const { images }: Props = Astro.props;
+
+const sizes = [
+  '(min-width: 1536px) 490px',
+  '(min-width: 1280px) 406px',
+  '(min-width: 1024px) 320px',
+  '(min-width: 768px) 490px',
+  '(min-width: 640px) 490px',
+  'min(calc(100vw - 2rem), 490px)',
+].join(', ');
+---
+
+<Container>
+  <div class="my-8 flex flex-col items-center lg:flex-row">
+    {
+      images.map((item) => (
+        <R2Picture
+          src={item.image}
+          alt={item.alt}
+          height={243}
+          width={523}
+          sizes={sizes}
+          class="w-full"
+        />
+      ))
+    }
+  </div>
+</Container>

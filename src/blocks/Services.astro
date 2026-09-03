@@ -1,0 +1,36 @@
+---
+import Container from '@/components/Container.astro';
+import R2Picture from '@/components/R2Picture.astro';
+
+interface Props {
+  services: {
+    name: string;
+    description: string;
+    image: string;
+    imageAlt: string;
+  }[];
+}
+
+const { services }: Props = Astro.props;
+---
+
+<Container class="my-10">
+  <div class="lg:grid lg:grid-cols-2 lg:gap-8 xl:grid-cols-3">
+    {
+      services.map((service) => (
+        <div class="mb-8 text-center">
+          <h2 class="text-2xl font-bold">{service.name}</h2>
+          <R2Picture
+            width={360}
+            height={195}
+            src={service.image}
+            alt={service.imageAlt}
+            sizes="(min-width: 360px) 360px, 100vw"
+            class="mx-auto my-4 h-48.75 w-full max-w-90 object-cover"
+          />
+          <p>{service.description}</p>
+        </div>
+      ))
+    }
+  </div>
+</Container>

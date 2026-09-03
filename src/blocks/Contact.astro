@@ -1,0 +1,107 @@
+---
+import Container from '@/components/Container.astro';
+import { MapPin, Phone, Printer } from '@lucide/astro';
+
+interface Props {
+  heading: string;
+  address: string;
+  phone: string;
+  fax: string;
+  emails: {
+    name: string;
+    email: string;
+  }[];
+}
+
+const { heading, address, phone, fax, emails }: Props = Astro.props;
+---
+
+<Container class="mt-20 lg:flex lg:justify-between">
+  <div>
+    <div>
+      <h3 class="mb-8 text-2xl font-bold">{heading}</h3>
+      <div class="info">
+        <MapPin class="mr-2 h-6 w-6" aria-hidden="true" />
+        <p>{address}</p>
+      </div>
+
+      <div class="info">
+        <Phone class="mr-2 h-6 w-6" aria-hidden="true" />
+        <p>{phone}</p>
+      </div>
+
+      <div class="info">
+        <Printer class="mr-2 h-6 w-6" aria-hidden="true" />
+        <p>{fax}</p>
+      </div>
+    </div>
+
+    <div class="mt-8 space-y-2 lg:mt-40">
+      {
+        emails.map((item) => (
+          <p>
+            {item.name}:{' '}
+            <a
+              class="focus-visible:outline-primary underline focus-visible:outline-2 focus-visible:outline-offset-2"
+              href={`mailto:${item.email}`}
+            >
+              {item.email}
+            </a>
+          </p>
+        ))
+      }
+    </div>
+  </div>
+
+  <form
+    method="POST"
+    action="/api/contact"
+    class="mt-10 flex flex-col gap-5 lg:w-1/2"
+  >
+    <label>
+      Full Name <span>*</span>
+      <input required name="name" id="name" type="text" />
+    </label>
+
+    <label>
+      Email Address <span>*</span>
+      <input required name="email" id="email" type="email" />
+    </label>
+
+    <label>
+      Phone Number
+      <input name="phone" id="phone" type="tel" />
+    </label>
+
+    <label>
+      Select Inquiry Type <span>*</span>
+      <select required name="to" id="to">
+        {emails.map((item) => <option value={item.email}>{item.name}</option>)}
+      </select>
+    </label>
+
+    <label>
+      Your Message <span>*</span>
+      <textarea
+        required
+        minlength={10}
+        name="message"
+        id="message"
+        class="min-h-50"></textarea>
+    </label>
+
+    <button
+      type="submit"
+      class="focus-visible:outline-primary focus-visible:outline-2 focus-visible:outline-offset-2"
+      >Submit</button
+    >
+  </form>
+</Container>
+
+<style>
+  @reference 'tailwindcss';
+
+  .info {
+    @apply mb-5 flex items-center rounded-2xl border border-neutral-400 p-5 sm:w-3/4 lg:w-fit;
+  }
+</style>

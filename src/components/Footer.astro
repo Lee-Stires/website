@@ -1,6 +1,6 @@
-<script lang="ts">
-  import { Container } from '@/components';
-</script>
+---
+import Container from '@/components/Container.astro';
+---
 
 <footer class="mt-20">
   <Container>
@@ -16,9 +16,17 @@
     >
       <p>&copy; 2026 Lee &amp; Stires, Inc</p>
       <div class="text-center">
-        <a href="/privacy">Privacy Policy</a>
+        <a
+          href="/privacy"
+          class="focus-visible:outline-primary focus-visible:outline-2 focus-visible:outline-offset-2"
+          >Privacy Policy</a
+        >
         <span>|</span>
-        <a href="/terms">Terms & Conditions</a>
+        <a
+          href="/terms"
+          class="focus-visible:outline-primary focus-visible:outline-2 focus-visible:outline-offset-2"
+          >Terms &amp; Conditions</a
+        >
       </div>
     </Container>
   </div>

@@ -1,0 +1,46 @@
+{
+  "title": "Our Services | Lee & Stires",
+  "description": "Lee & Stires services offered",
+  "slug": "services",
+  "blocks": [
+    {
+      "_type": "services",
+      "services": [
+        {
+          "name": "Site Clearing & Demolition",
+          "description": "From small-scale clearing projects to major structure demolition projects, we can handle every phase with precision, safety and efficiency.",
+          "image": "demolition.jpg",
+          "imageAlt": "Site Clearing & Demolition"
+        },
+        {
+          "name": "Earthwork",
+          "description": "Earthwork for mass grading, rough grading & finish grading using advanced technology, maintained equipment and experienced operators.",
+          "image": "earthwork.png",
+          "imageAlt": "Earth Work"
+        },
+        {
+          "name": "Asphalt Paving",
+          "description": "Asphalt paving services include private streets, public streets, parking lots, school sites and restoration of existing paved areas.",
+          "image": "paving.png",
+          "imageAlt": "Asphalt Paving"
+        }
+      ]
+    },
+    {
+      "_type": "list",
+      "title": "Specialty Services",
+      "description": "Specialty services can be provided upon request. These services include but are not limited to the following:",
+      "items": [
+        "Site Concrete",
+        "Fog Seal, Seal Coat & Slurry Seal",
+        "Striping & Signage",
+        "Stabilized Subgrade - Cement Treated Soil / Base, Lime Treatment, Etc.",
+        "Wet Utilities",
+        "Sewer, Water & Storm Drain",
+        "Dry Utilities",
+        "Block Walls",
+        "Fencing - Chain Link & Wrought Iron"
+      ]
+    }
+  ]
+}

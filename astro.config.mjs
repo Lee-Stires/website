@@ -2,7 +2,6 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import { loadEnv } from 'vite';
-import svelte from '@astrojs/svelte';
 import vercel from '@astrojs/vercel';
 
 if (!process.env.NODE_ENV) {
@@ -31,6 +30,4 @@ export default defineConfig({
       },
     },
   },
-
-  integrations: [svelte()],
 });
