@@ -16,15 +16,9 @@ const heroBlock = z.object({
 
 const textBlock = z.object({
   _type: z.literal('text'),
-  // One or more paragraphs. Separate paragraphs with a blank line.
-  body: z.string(),
-  // Optional link shown at the end of the last paragraph.
-  link: z
-    .object({
-      text: z.string(),
-      href: z.string(),
-    })
-    .optional(),
+  // Rich text authored in the Lab editor. Stored as Markdown; supports
+  // paragraphs plus inline bold, italic, and links.
+  body: z.string().meta({ format: 'markdown' }),
 });
 
 const imageGroupBlock = z.object({
