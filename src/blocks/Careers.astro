@@ -1,0 +1,122 @@
+---
+import Container from '@/components/Container.astro';
+import { Paperclip } from '@lucide/astro';
+
+interface Props {
+  heading: string;
+  positions: string[];
+  applicationFile: string;
+}
+
+const { heading, positions, applicationFile }: Props = Astro.props;
+---
+
+<Container class="mt-10">
+  <h1 class="text-center text-xl font-bold md:text-3xl">{heading}</h1>
+</Container>
+
+<div class="mt-10 w-full bg-gray-100 py-10 text-center">
+  {positions.map((position) => <p>{position}</p>)}
+  <a
+    class="bg-secondary focus-visible:outline-primary mx-auto mt-4 block w-fit rounded-sm p-5 focus-visible:outline-2 focus-visible:outline-offset-2"
+    target="_blank"
+    href={applicationFile}>Download Application</a
+  >
+</div>
+
+<Container>
+  <form
+    method="POST"
+    action="/api/careers"
+    enctype="multipart/form-data"
+    class="mx-auto my-10 flex max-w-137.5 flex-col gap-4"
+  >
+    <label>
+      Full Name <span>*</span>
+      <input required name="name" type="text" />
+    </label>
+
+    <label>
+      Email Address <span>*</span>
+      <input required name="email" type="email" />
+    </label>
+
+    <label>
+      Phone Number <span>*</span>
+      <input required name="phone" type="tel" />
+    </label>
+
+    <label>
+      Message
+      <textarea name="message"></textarea>
+    </label>
+
+    <div class="flex flex-col gap-4">
+      <label
+        for="resume-upload"
+        class="flex w-fit cursor-pointer items-center gap-2 rounded border border-gray-300 px-4 py-2 hover:bg-gray-50"
+      >
+        <input
+          type="file"
+          id="resume-upload"
+          name="application"
+          accept=".pdf,application/pdf"
+          class="peer sr-only"
+        />
+        <Paperclip class="h-5 w-5" aria-hidden="true" />
+        <span id="file-label" class="text-neutral-800"
+          >Attach Resume (PDF, max 5MB)</span
+        >
+      </label>
+      <p id="file-error" class="hidden text-sm text-red-600" role="alert"></p>
+      <button
+        type="submit"
+        class="focus-visible:outline-primary focus-visible:outline-2 focus-visible:outline-offset-2"
+        >Submit</button
+      >
+    </div>
+  </form>
+</Container>
+
+<script>
+  const input = document.getElementById(
+    'resume-upload',
+  ) as HTMLInputElement | null;
+  const label = document.getElementById('file-label') as HTMLSpanElement | null;
+  const error = document.getElementById(
+    'file-error',
+  ) as HTMLParagraphElement | null;
+  const MAX_SIZE = 5 * 1024 * 1024;
+  const DEFAULT_LABEL = 'Attach Resume (PDF, max 5MB)';
+
+  if (input && label && error) {
+    input.addEventListener('change', (): void => {
+      const file = input.files?.[0];
+      error.textContent = '';
+      error.classList.add('hidden');
+
+      if (!file) {
+        label.textContent = DEFAULT_LABEL;
+        return;
+      }
+
+      if (file.type !== 'application/pdf') {
+        error.textContent = 'Only PDF files are accepted.';
+        error.classList.remove('hidden');
+        input.value = '';
+        label.textContent = DEFAULT_LABEL;
+        return;
+      }
+
+      if (file.size > MAX_SIZE) {
+        error.textContent = 'File exceeds the 5MB size limit.';
+        error.classList.remove('hidden');
+        input.value = '';
+        label.textContent = DEFAULT_LABEL;
+        return;
+      }
+
+      label.textContent = file.name;
+    });
+  }
+</script>

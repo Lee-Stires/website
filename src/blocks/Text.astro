@@ -1,0 +1,42 @@
+---
+import Container from '@/components/Container.astro';
+
+interface Props {
+  body: string;
+  link?: {
+    text: string;
+    href: string;
+  };
+}
+
+const { body, link }: Props = Astro.props;
+
+const paragraphs = body
+  .split(/\n\s*\n/)
+  .map((p) => p.trim())
+  .filter(Boolean);
+const lastIndex = paragraphs.length - 1;
+---
+
+<Container class="mt-10">
+  {
+    paragraphs.map((paragraph, i) => (
+      <p class="mb-4 last:mb-0">
+        {paragraph}
+        {link && i === lastIndex && (
+          <>
+            {' '}
+            <a
+              class="focus-visible:outline-primary underline focus-visible:outline-2 focus-visible:outline-offset-2"
+              target="_blank"
+              rel="noreferrer"
+              href={link.href}
+            >
+              {link.text}
+            </a>
+          </>
+        )}
+      </p>
+    ))
+  }
+</Container>

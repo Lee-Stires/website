@@ -1,0 +1,28 @@
+{
+  "title": "Contact | Lee & Stires",
+  "description": "Contact Lee & Stires.",
+  "slug": "contact",
+  "blocks": [
+    {
+      "_type": "contact",
+      "heading": "Contact Us",
+      "address": "634 Palmetto Avenue Ontario, California 91762",
+      "phone": "(909) 983-9557",
+      "fax": "(909) 983-1351",
+      "emails": [
+        {
+          "name": "General Inquires",
+          "email": "info@lee-stires.com"
+        },
+        {
+          "name": "Estimating",
+          "email": "estimating@lee-stires.com"
+        },
+        {
+          "name": "Accounting",
+          "email": "accounting@lee-stires.com"
+        }
+      ]
+    }
+  ]
+}

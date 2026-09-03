@@ -1,18 +1,23 @@
 ---
 import type { Props as SEOProps } from '@/components/SEO.astro';
 import BaseLayout from './BaseLayout.astro';
-import { Footer, Navigation } from '@/components';
+import { Footer, Header } from '@/components';
 import '@fontsource-variable/dm-sans';
 
 interface Props extends SEOProps {}
 
 const { ...restProps }: Props = Astro.props;
-const currentPath = Astro.url.pathname;
 ---
 
 <BaseLayout {...restProps}>
-  <Navigation path={currentPath} client:media="(max-width: 945px)" />
-  <main>
+  <a
+    href="#main-content"
+    class="bg-secondary sr-only z-[100] rounded px-4 py-2 font-bold text-neutral-900 focus:not-sr-only focus:absolute focus:top-2 focus:left-2"
+  >
+    Skip to main content
+  </a>
+  <Header />
+  <main id="main-content">
     <slot />
   </main>
   <Footer />

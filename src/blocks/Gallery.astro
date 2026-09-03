@@ -1,0 +1,309 @@
+---
+import Container from '@/components/Container.astro';
+
+interface Props {
+  series: {
+    id: string;
+    name: string;
+    photos: {
+      image: string;
+      alt: string;
+    }[];
+  }[];
+}
+
+const { series }: Props = Astro.props;
+---
+
+<Container class="my-10">
+  <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      series.map((s, i) => (
+        <button
+          type="button"
+          data-gallery-open={i}
+          class="group focus-visible:outline-primary relative aspect-square w-full cursor-pointer overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2"
+        >
+          <img
+            src={s.photos[0].image}
+            alt={s.photos[0].alt}
+            class="h-full w-full object-cover transition group-hover:scale-105 motion-reduce:transition-none"
+          />
+          <span
+            class="absolute inset-0 bg-black/40 transition group-hover:bg-black/50 motion-reduce:transition-none"
+            aria-hidden="true"
+          />
+          <span class="absolute bottom-0 left-0 p-4 text-left font-bold text-white drop-shadow-lg">
+            {s.name}
+          </span>
+        </button>
+      ))
+    }
+  </div>
+</Container>
+
+<script
+  type="application/json"
+  id="gallery-data"
+  set:html={JSON.stringify(series)}
+/>
+
+<div
+  id="gallery-modal"
+  class="pointer-events-none invisible fixed inset-0 z-50 flex items-center justify-center bg-black/90 opacity-0 transition-[opacity,visibility] duration-200 motion-reduce:transition-none"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="gallery-modal-title"
+  inert
+>
+  <h2 id="gallery-modal-title" class="sr-only">Photo gallery</h2>
+
+  <button
+    type="button"
+    data-gallery-close
+    aria-label="Close gallery"
+    class="focus-visible:outline-primary absolute top-4 right-4 z-10 cursor-pointer rounded p-2 text-white transition hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 motion-reduce:transition-none"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="28"
+      height="28"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M18 6 6 18"></path>
+      <path d="m6 6 12 12"></path>
+    </svg>
+  </button>
+
+  <button
+    type="button"
+    data-gallery-prev
+    aria-label="Previous photo"
+    class="focus-visible:outline-primary absolute top-1/2 left-2 z-10 -translate-y-1/2 cursor-pointer rounded p-2 text-white transition hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 motion-reduce:transition-none md:left-4"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="32"
+      height="32"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="m15 18-6-6 6-6"></path>
+    </svg>
+  </button>
+
+  <div
+    class="relative flex max-h-[90vh] max-w-[90vw] flex-col items-center gap-4"
+  >
+    <div class="relative flex min-h-[40vh] items-center justify-center">
+      <span
+        id="gallery-spinner"
+        class="absolute inset-0 z-10 flex items-center justify-center"
+        aria-hidden="true"
+      >
+        <svg
+          class="h-12 w-12 animate-spin text-white motion-reduce:animate-none"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-dasharray="30 50"
+            stroke-linecap="round"></circle>
+        </svg>
+      </span>
+      <img
+        id="gallery-image"
+        src=""
+        alt=""
+        class="max-h-[80vh] w-auto object-contain opacity-0 transition-opacity duration-200 motion-reduce:transition-none"
+      />
+    </div>
+    <p id="gallery-counter" class="text-white"></p>
+  </div>
+
+  <button
+    type="button"
+    data-gallery-next
+    aria-label="Next photo"
+    class="focus-visible:outline-primary absolute top-1/2 right-2 z-10 -translate-y-1/2 cursor-pointer rounded p-2 text-white transition hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 motion-reduce:transition-none md:right-4"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="32"
+      height="32"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="m9 18 6-6-6-6"></path>
+    </svg>
+  </button>
+
+  <button
+    type="button"
+    data-gallery-close
+    aria-label="Close gallery"
+    tabindex="-1"
+    class="absolute inset-0 -z-10 cursor-default"></button>
+</div>
+
+<script>
+  interface GalleryPhoto {
+    image: string;
+    alt: string;
+  }
+  interface GallerySeries {
+    id: string;
+    name: string;
+    photos: GalleryPhoto[];
+  }
+
+  const dataEl = document.getElementById('gallery-data');
+  const modal = document.getElementById('gallery-modal');
+  const image = document.getElementById(
+    'gallery-image',
+  ) as HTMLImageElement | null;
+  const spinner = document.getElementById('gallery-spinner');
+  const counter = document.getElementById('gallery-counter');
+  const prevBtn =
+    modal?.querySelector<HTMLButtonElement>('[data-gallery-prev]') ?? null;
+  const nextBtn =
+    modal?.querySelector<HTMLButtonElement>('[data-gallery-next]') ?? null;
+
+  if (dataEl && modal && image && spinner && counter && prevBtn && nextBtn) {
+    const series: GallerySeries[] = JSON.parse(dataEl.textContent || '[]');
+    const openTriggers = Array.from(
+      document.querySelectorAll<HTMLButtonElement>('[data-gallery-open]'),
+    );
+    const closeTriggers = Array.from(
+      modal.querySelectorAll<HTMLButtonElement>('[data-gallery-close]'),
+    );
+
+    let seriesIndex = 0;
+    let photoIndex = 0;
+    let lastFocused: HTMLElement | null = null;
+
+    function currentSeries(): GallerySeries {
+      return series[seriesIndex];
+    }
+
+    function render(): void {
+      const photos = currentSeries().photos;
+      const photo = photos[photoIndex];
+      spinner!.classList.remove('hidden');
+      image!.classList.add('opacity-0');
+      image!.src = photo.image;
+      image!.alt = photo.alt;
+      counter!.textContent = `${photoIndex + 1} / ${photos.length}`;
+      prevBtn!.hidden = photoIndex === 0;
+      nextBtn!.hidden = photoIndex === photos.length - 1;
+    }
+
+    function focusableInModal(): HTMLElement[] {
+      return Array.from(
+        modal!.querySelectorAll<HTMLElement>(
+          'button:not([hidden]):not([tabindex="-1"])',
+        ),
+      );
+    }
+
+    function openModal(index: number): void {
+      seriesIndex = index;
+      photoIndex = 0;
+      lastFocused = document.activeElement as HTMLElement | null;
+      modal!.removeAttribute('inert');
+      modal!.classList.remove('pointer-events-none', 'invisible', 'opacity-0');
+      document.body.style.overflow = 'hidden';
+      render();
+      (closeTriggers[0] ?? modal!).focus();
+    }
+
+    function closeModal(): void {
+      modal!.setAttribute('inert', '');
+      modal!.classList.add('pointer-events-none', 'invisible', 'opacity-0');
+      document.body.style.overflow = '';
+      lastFocused?.focus();
+    }
+
+    function goPrev(): void {
+      if (photoIndex > 0) {
+        photoIndex -= 1;
+        render();
+      }
+    }
+
+    function goNext(): void {
+      if (photoIndex < currentSeries().photos.length - 1) {
+        photoIndex += 1;
+        render();
+      }
+    }
+
+    function onKeydown(event: KeyboardEvent): void {
+      if (modal!.hasAttribute('inert')) return;
+      if (event.key === 'Escape') {
+        closeModal();
+        return;
+      }
+      if (event.key === 'ArrowLeft') {
+        goPrev();
+        return;
+      }
+      if (event.key === 'ArrowRight') {
+        goNext();
+        return;
+      }
+      if (event.key === 'Tab') {
+        const items = focusableInModal();
+        if (items.length === 0) return;
+        const first = items[0];
+        const last = items[items.length - 1];
+        const active = document.activeElement as HTMLElement;
+        if (event.shiftKey && active === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && active === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+    }
+
+    image.addEventListener('load', (): void => {
+      spinner!.classList.add('hidden');
+      image!.classList.remove('opacity-0');
+    });
+    openTriggers.forEach((trigger): void => {
+      trigger.addEventListener('click', (): void => {
+        openModal(Number(trigger.dataset.galleryOpen));
+      });
+    });
+    closeTriggers.forEach((trigger): void => {
+      trigger.addEventListener('click', closeModal);
+    });
+    prevBtn.addEventListener('click', goPrev);
+    nextBtn.addEventListener('click', goNext);
+    document.addEventListener('keydown', onKeydown);
+  }
+</script>
