@@ -8,84 +8,102 @@ import { z } from 'astro/zod';
  * Nothing else should touch the `blockSchema` array.
  */
 
-const heroBlock = z.object({
-  _type: z.literal('hero'),
-  image: z.string(),
-  imageAlt: z.string(),
-});
+const heroBlock = z
+  .object({
+    _type: z.literal('hero'),
+    image: z.string(),
+    imageAlt: z.string(),
+  })
+  .meta({ title: 'Hero' });
 
-const textBlock = z.object({
-  _type: z.literal('text'),
-  // Rich text authored in the Lab editor. Stored as Markdown; supports
-  // paragraphs plus inline bold, italic, and links.
-  body: z.string().meta({ format: 'markdown' }),
-});
+const textBlock = z
+  .object({
+    _type: z.literal('text'),
+    // Rich text authored in the Lab editor. Stored as Markdown; supports
+    // paragraphs plus inline bold, italic, and links.
+    body: z.string().meta({ format: 'markdown' }),
+  })
+  .meta({ title: 'Text' });
 
-const imageGroupBlock = z.object({
-  _type: z.literal('imageGroup'),
-  images: z.array(
-    z.object({
-      image: z.string(),
-      alt: z.string(),
-    }),
-  ),
-});
+const imageGroupBlock = z
+  .object({
+    _type: z.literal('imageGroup'),
+    images: z.array(
+      z.object({
+        image: z.string(),
+        alt: z.string(),
+      }),
+    ),
+  })
+  .meta({ title: 'Image Group' });
 
-const servicesBlock = z.object({
-  _type: z.literal('services'),
-  services: z.array(
-    z.object({
-      name: z.string(),
-      description: z.string(),
-      image: z.string(),
-      imageAlt: z.string(),
-    }),
-  ),
-});
+const servicesBlock = z
+  .object({
+    _type: z.literal('services'),
+    services: z.array(
+      z.object({
+        name: z.string(),
+        description: z.string(),
+        image: z.string(),
+        imageAlt: z.string(),
+      }),
+    ),
+  })
+  .meta({ title: 'Services' });
 
-const listBlock = z.object({
-  _type: z.literal('list'),
-  title: z.string(),
-  description: z.string(),
-  items: z.array(z.string()),
-});
+const listBlock = z
+  .object({
+    _type: z.literal('list'),
+    title: z.string(),
+    description: z.string(),
+    items: z.array(z.string()),
+  })
+  .meta({ title: 'List' });
 
-const galleryBlock = z.object({
-  _type: z.literal('gallery'),
-  series: z.array(
-    z.object({
-      id: z.string(),
-      name: z.string(),
-      photos: z.array(
-        z.object({
-          image: z.string(),
-          alt: z.string(),
-        }),
-      ),
-    }),
-  ),
-});
+const galleryBlock = z
+  .object({
+    _type: z.literal('gallery'),
+    series: z.array(
+      z.object({
+        id: z.string(),
+        name: z.string(),
+        photos: z.array(
+          z.object({
+            image: z.string(),
+            alt: z.string(),
+          }),
+        ),
+      }),
+    ),
+  })
+  .meta({ title: 'Gallery' });
 
-const contactBlock = z.object({
-  _type: z.literal('contact'),
-  heading: z.string(),
-  address: z.string(),
-  phone: z.string(),
-  fax: z.string(),
-  emails: z.array(
-    z.object({
-      name: z.string(),
-      email: z.string(),
-    }),
-  ),
-});
+const contactBlock = z
+  .object({
+    _type: z.literal('contact'),
+    heading: z.string(),
+    address: z.string(),
+    phone: z.string(),
+    fax: z.string(),
+    emails: z.array(
+      z.object({
+        name: z.string(),
+        email: z.string(),
+      }),
+    ),
+  })
+  .meta({ title: 'Contact' });
 
-const careersBlock = z.object({
-  _type: z.literal('careers'),
-  heading: z.string(),
-  positions: z.array(z.string()),
-  applicationFile: z.string(),
-});
+const careersBlock = z
+  .object({
+    _type: z.literal('careers'),
+    heading: z.string(),
+    positions: z.array(z.string()),
+    applicationFile: z
+      .string()
+      .meta({ format: 'file', accept: 'application/pdf' }),
+  })
+  .meta({ title: 'Careers' });
 
 export const blockSchema = z.discriminatedUnion('_type', [
   heroBlock,

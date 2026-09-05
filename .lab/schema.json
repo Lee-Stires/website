@@ -20,7 +20,8 @@
         "image",
         "imageAlt"
       ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "title": "Hero"
     },
     {
       "type": "object",
@@ -38,7 +39,8 @@
         "_type",
         "body"
       ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "title": "Text"
     },
     {
       "type": "object",
@@ -71,7 +73,8 @@
         "_type",
         "images"
       ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "title": "Image Group"
     },
     {
       "type": "object",
@@ -112,7 +115,8 @@
         "_type",
         "services"
       ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "title": "Services"
     },
     {
       "type": "object",
@@ -140,7 +144,8 @@
         "description",
         "items"
       ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "title": "List"
     },
     {
       "type": "object",
@@ -193,7 +198,8 @@
         "_type",
         "series"
       ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "title": "Gallery"
     },
     {
       "type": "object",
@@ -242,7 +248,8 @@
         "fax",
         "emails"
       ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "title": "Contact"
     },
     {
       "type": "object",
@@ -261,7 +268,9 @@
           }
         },
         "applicationFile": {
-          "type": "string"
+          "type": "string",
+          "format": "file",
+          "accept": "application/pdf"
         }
       },
       "required": [
@@ -270,7 +279,8 @@
         "positions",
         "applicationFile"
       ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "title": "Careers"
     }
   ]
 }
