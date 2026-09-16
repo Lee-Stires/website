@@ -83,6 +83,19 @@ export function initLabBridge(): void {
   });
 
   document.addEventListener('click', (event) => {
+    const anchor = (event.target as Element).closest('a[href]');
+    const href = anchor?.getAttribute('href');
+    if (href) {
+      const url = new URL(href, window.location.href);
+      const samePageAnchor =
+        !!url.hash &&
+        url.href.split('#')[0] === window.location.href.split('#')[0];
+      if (!samePageAnchor) {
+        event.preventDefault();
+        window.open(url.href, '_blank', 'noopener,noreferrer');
+      }
+    }
+
     const target = (event.target as Element).closest('[data-lab-id]');
     window.parent.postMessage(
       {
