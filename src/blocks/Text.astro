@@ -10,12 +10,30 @@ const { body }: Props = Astro.props;
 
 const marked = new Marked({ gfm: true, breaks: false });
 
+const HEADING_CLASSES: Record<number, string> = {
+  1: 'mt-10 mb-4 text-3xl font-bold first:mt-0',
+  2: 'mt-8 mb-3 text-2xl font-bold first:mt-0',
+  3: 'mt-6 mb-2 text-xl font-bold first:mt-0',
+};
+
 marked.use({
   renderer: {
     // Content is Markdown authored in the Lab editor — drop any raw HTML.
     html: () => '',
     paragraph({ tokens }) {
       return `<p class="mb-4 last:mb-0">${this.parser.parseInline(tokens)}</p>`;
+    },
+    heading({ tokens, depth }) {
+      const classes = HEADING_CLASSES[depth] ?? HEADING_CLASSES[3];
+      return `<h${depth} class="${classes}">${this.parser.parseInline(tokens)}</h${depth}>`;
+    },
+    list({ ordered, items }) {
+      const tag = ordered ? 'ol' : 'ul';
+      const listClass = ordered ? 'list-decimal' : 'list-disc';
+      const body = items
+        .map((item) => `<li>${this.parser.parse(item.tokens)}</li>`)
+        .join('');
+      return `<${tag} class="${listClass} mb-4 list-outside space-y-1 pl-6 last:mb-0">${body}</${tag}>`;
     },
     link({ href, title, tokens }) {
       const text = this.parser.parseInline(tokens);

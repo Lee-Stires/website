@@ -1,5 +1,7 @@
 ---
 import Container from '@/components/Container.astro';
+import RenditionPicture from '@/components/RenditionPicture.astro';
+import { GALLERY_IMAGE } from './media';
 
 interface Props {
   series: {
@@ -24,9 +26,13 @@ const { series }: Props = Astro.props;
           data-gallery-open={i}
           class="group focus-visible:outline-primary relative aspect-square w-full cursor-pointer overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2"
         >
-          <img
+          <RenditionPicture
             src={s.photos[0].image}
             alt={s.photos[0].alt}
+            width={940}
+            height={940}
+            widths={GALLERY_IMAGE.widths}
+            sizes={GALLERY_IMAGE.sizes}
             class="h-full w-full object-cover transition group-hover:scale-105 motion-reduce:transition-none"
           />
           <span
@@ -132,6 +138,7 @@ const { series }: Props = Astro.props;
         id="gallery-image"
         src=""
         alt=""
+        decoding="async"
         class="max-h-[80vh] w-auto object-contain opacity-0 transition-opacity duration-200 motion-reduce:transition-none"
       />
     </div>
@@ -169,6 +176,10 @@ const { series }: Props = Astro.props;
 </div>
 
 <script>
+  import { getR2Url } from '@/lib/utils/image';
+  import { parseRendition } from '@/lib/rendition';
+  import { GALLERY_IMAGE } from './media';
+
   interface GalleryPhoto {
     image: string;
     alt: string;
@@ -177,6 +188,13 @@ const { series }: Props = Astro.props;
     id: string;
     name: string;
     photos: GalleryPhoto[];
+  }
+
+  const lightboxWidth = Math.max(...GALLERY_IMAGE.widths);
+
+  function lightboxSrc(image: string): string {
+    const parsed = parseRendition(image);
+    return parsed ? `${parsed.base}/${lightboxWidth}.jpg` : getR2Url(image);
   }
 
   const dataEl = document.getElementById('gallery-data');
@@ -213,7 +231,7 @@ const { series }: Props = Astro.props;
       const photo = photos[photoIndex];
       spinner!.classList.remove('hidden');
       image!.classList.add('opacity-0');
-      image!.src = photo.image;
+      image!.src = lightboxSrc(photo.image);
       image!.alt = photo.alt;
       counter!.textContent = `${photoIndex + 1} / ${photos.length}`;
       prevBtn!.hidden = photoIndex === 0;

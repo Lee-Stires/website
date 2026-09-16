@@ -1,0 +1,68 @@
+---
+import { getR2ImageType, getR2Url } from '@/lib/utils/image';
+import { parseRendition, renditionSrcset } from '@/lib/rendition';
+
+interface Props {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  widths: readonly number[];
+  formats?: readonly string[];
+  sizes?: string;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'low' | 'auto';
+}
+
+const {
+  src,
+  alt,
+  width,
+  height,
+  widths,
+  formats = ['avif', 'webp'],
+  sizes,
+  class: className,
+  loading = 'lazy',
+  fetchpriority,
+} = Astro.props;
+
+const parsed = parseRendition(src);
+const widthList = [...new Set(widths)].sort((a, b) => a - b);
+const maxWidth = widthList[widthList.length - 1] ?? width;
+
+const sourceFormats = [...formats.filter((f) => f !== 'jpg'), 'jpg'];
+const imgSrc = parsed ? `${parsed.base}/${maxWidth}.jpg` : getR2Url(src);
+const fallbackType = parsed ? undefined : getR2ImageType(src);
+---
+
+<picture>
+  {
+    parsed
+      ? sourceFormats.map((format) => (
+          <source
+            type={`image/${format === 'jpg' ? 'jpeg' : format}`}
+            srcset={renditionSrcset(parsed.base, widthList, format)}
+            sizes={sizes}
+          />
+        ))
+      : fallbackType && (
+          <source
+            srcset={`${imgSrc} ${width}w`}
+            sizes={sizes}
+            type={fallbackType}
+          />
+        )
+  }
+  <img
+    src={imgSrc}
+    width={width}
+    height={height}
+    alt={alt}
+    loading={loading}
+    decoding="async"
+    fetchpriority={fetchpriority}
+    class={className}
+  />
+</picture>
