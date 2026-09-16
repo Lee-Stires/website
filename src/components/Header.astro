@@ -1,5 +1,6 @@
 ---
 import Container from '@/components/Container.astro';
+import Logo from '@/components/Logo.astro';
 
 const navList = [
   { label: 'Home', href: '/' },
@@ -15,12 +16,13 @@ const path = Astro.url.pathname;
 
 <header class="relative z-50 pt-10">
   <Container>
-    <a href="/" class="group block">
-      <p
-        class="text-primary font-brand text-center text-4xl uppercase transition-transform duration-300 text-shadow-[5px_10px_10px_#000] group-hover:scale-[1.01] motion-reduce:transition-none sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl"
-      >
-        Lee &amp; stires, Inc.
-      </p>
+    <a
+      href="/"
+      class="text-primary group flex justify-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl"
+    >
+      <Logo
+        class="h-[1em] w-auto drop-shadow-[5px_10px_10px_#000] transition-transform duration-300 group-hover:scale-[1.01] motion-reduce:transition-none"
+      />
     </a>
 
     <nav aria-label="Main">

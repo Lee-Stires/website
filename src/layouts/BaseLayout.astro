@@ -27,7 +27,7 @@ const { bodyClass, ...restProps }: Props = Astro.props;
       }
     </script>
   </head>
-  <body class={bodyClass}>
+  <body class:list={['flex min-h-screen flex-col', bodyClass]}>
     <slot />
 
     <style is:global>

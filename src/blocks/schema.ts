@@ -1,5 +1,12 @@
 import { z } from 'astro/zod';
 
+import {
+  GALLERY_IMAGE,
+  HERO_IMAGE,
+  IMAGE_GROUP_IMAGE,
+  SERVICES_IMAGE,
+} from './media';
+
 /**
  * One Zod object per block `_type`. To add a block:
  *   1. Define its object here.
@@ -12,7 +19,7 @@ const heroBlock = z
   .object({
     _type: z.literal('hero'),
     _labId: z.string().meta({ hidden: true, format: 'uuid' }),
-    image: z.string(),
+    image: z.string().meta({ ...HERO_IMAGE }),
     imageAlt: z.string(),
   })
   .meta({ title: 'Hero' });
@@ -33,7 +40,7 @@ const imageGroupBlock = z
     _labId: z.string().meta({ hidden: true, format: 'uuid' }),
     images: z.array(
       z.object({
-        image: z.string(),
+        image: z.string().meta({ ...IMAGE_GROUP_IMAGE }),
         alt: z.string(),
       }),
     ),
@@ -48,7 +55,7 @@ const servicesBlock = z
       z.object({
         name: z.string(),
         description: z.string(),
-        image: z.string(),
+        image: z.string().meta({ ...SERVICES_IMAGE }),
         imageAlt: z.string(),
       }),
     ),
@@ -75,7 +82,7 @@ const galleryBlock = z
         name: z.string(),
         photos: z.array(
           z.object({
-            image: z.string(),
+            image: z.string().meta({ ...GALLERY_IMAGE }),
             alt: z.string(),
           }),
         ),

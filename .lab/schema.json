@@ -14,18 +14,17 @@
           "format": "uuid"
         },
         "image": {
-          "type": "string"
+          "type": "string",
+          "format": "image",
+          "aspectRatio": "157/75",
+          "sizes": "(min-width: 1536px) 1472px, (min-width: 1024px) 960px, calc(100vw - 2rem)",
+          "widths": [592, 960, 1184, 1472, 1920, 2944]
         },
         "imageAlt": {
           "type": "string"
         }
       },
-      "required": [
-        "_type",
-        "_labId",
-        "image",
-        "imageAlt"
-      ],
+      "required": ["_type", "_labId", "image", "imageAlt"],
       "additionalProperties": false,
       "title": "Hero"
     },
@@ -46,11 +45,7 @@
           "format": "markdown"
         }
       },
-      "required": [
-        "_type",
-        "_labId",
-        "body"
-      ],
+      "required": ["_type", "_labId", "body"],
       "additionalProperties": false,
       "title": "Text"
     },
@@ -72,25 +67,22 @@
             "type": "object",
             "properties": {
               "image": {
-                "type": "string"
+                "type": "string",
+                "format": "image",
+                "aspectRatio": "523/243",
+                "sizes": "(min-width: 1024px) 320px, (min-width: 640px) 490px, min(calc(100vw - 2rem), 490px)",
+                "widths": [320, 490, 640, 980]
               },
               "alt": {
                 "type": "string"
               }
             },
-            "required": [
-              "image",
-              "alt"
-            ],
+            "required": ["image", "alt"],
             "additionalProperties": false
           }
         }
       },
-      "required": [
-        "_type",
-        "_labId",
-        "images"
-      ],
+      "required": ["_type", "_labId", "images"],
       "additionalProperties": false,
       "title": "Image Group"
     },
@@ -118,27 +110,22 @@
                 "type": "string"
               },
               "image": {
-                "type": "string"
+                "type": "string",
+                "format": "image",
+                "aspectRatio": "24/13",
+                "sizes": "(min-width: 360px) 360px, 100vw",
+                "widths": [360, 720, 1080]
               },
               "imageAlt": {
                 "type": "string"
               }
             },
-            "required": [
-              "name",
-              "description",
-              "image",
-              "imageAlt"
-            ],
+            "required": ["name", "description", "image", "imageAlt"],
             "additionalProperties": false
           }
         }
       },
-      "required": [
-        "_type",
-        "_labId",
-        "services"
-      ],
+      "required": ["_type", "_labId", "services"],
       "additionalProperties": false,
       "title": "Services"
     },
@@ -167,13 +154,7 @@
           }
         }
       },
-      "required": [
-        "_type",
-        "_labId",
-        "title",
-        "description",
-        "items"
-      ],
+      "required": ["_type", "_labId", "title", "description", "items"],
       "additionalProperties": false,
       "title": "List"
     },
@@ -206,34 +187,27 @@
                   "type": "object",
                   "properties": {
                     "image": {
-                      "type": "string"
+                      "type": "string",
+                      "format": "image",
+                      "aspectRatio": "1/1",
+                      "sizes": "(min-width: 1024px) 470px, (min-width: 640px) 300px, 100vw",
+                      "widths": [300, 470, 600, 940, 1600]
                     },
                     "alt": {
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "image",
-                    "alt"
-                  ],
+                  "required": ["image", "alt"],
                   "additionalProperties": false
                 }
               }
             },
-            "required": [
-              "id",
-              "name",
-              "photos"
-            ],
+            "required": ["id", "name", "photos"],
             "additionalProperties": false
           }
         }
       },
-      "required": [
-        "_type",
-        "_labId",
-        "series"
-      ],
+      "required": ["_type", "_labId", "series"],
       "additionalProperties": false,
       "title": "Gallery"
     },
@@ -273,10 +247,7 @@
                 "type": "string"
               }
             },
-            "required": [
-              "name",
-              "email"
-            ],
+            "required": ["name", "email"],
             "additionalProperties": false
           }
         }

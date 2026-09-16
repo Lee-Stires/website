@@ -1,6 +1,7 @@
 ---
 import Container from '@/components/Container.astro';
-import R2Picture from '@/components/R2Picture.astro';
+import RenditionPicture from '@/components/RenditionPicture.astro';
+import { IMAGE_GROUP_IMAGE } from './media';
 
 interface Props {
   images: {
@@ -10,27 +11,19 @@ interface Props {
 }
 
 const { images }: Props = Astro.props;
-
-const sizes = [
-  '(min-width: 1536px) 490px',
-  '(min-width: 1280px) 406px',
-  '(min-width: 1024px) 320px',
-  '(min-width: 768px) 490px',
-  '(min-width: 640px) 490px',
-  'min(calc(100vw - 2rem), 490px)',
-].join(', ');
 ---
 
 <Container>
   <div class="my-8 flex flex-col items-center lg:flex-row">
     {
       images.map((item) => (
-        <R2Picture
+        <RenditionPicture
           src={item.image}
           alt={item.alt}
           height={243}
           width={523}
-          sizes={sizes}
+          widths={IMAGE_GROUP_IMAGE.widths}
+          sizes={IMAGE_GROUP_IMAGE.sizes}
           class="w-full"
         />
       ))

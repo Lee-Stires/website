@@ -14,7 +14,7 @@ const r2Domain = new URL(env.PUBLIC_R2_URL).hostname;
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'static',
+  output: 'server',
   adapter: vercel(),
   site: 'https://lee-stires.com',
 

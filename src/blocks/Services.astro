@@ -1,6 +1,7 @@
 ---
 import Container from '@/components/Container.astro';
-import R2Picture from '@/components/R2Picture.astro';
+import RenditionPicture from '@/components/RenditionPicture.astro';
+import { SERVICES_IMAGE } from './media';
 
 interface Props {
   services: {
@@ -20,12 +21,13 @@ const { services }: Props = Astro.props;
       services.map((service) => (
         <div class="mb-8 text-center">
           <h2 class="text-2xl font-bold">{service.name}</h2>
-          <R2Picture
+          <RenditionPicture
             width={360}
             height={195}
             src={service.image}
+            widths={SERVICES_IMAGE.widths}
+            sizes={SERVICES_IMAGE.sizes}
             alt={service.imageAlt}
-            sizes="(min-width: 360px) 360px, 100vw"
             class="mx-auto my-4 h-48.75 w-full max-w-90 object-cover"
           />
           <p>{service.description}</p>
