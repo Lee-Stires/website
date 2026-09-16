@@ -1,12 +1,12 @@
 const UUID =
   '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}';
 const RENDITION_RE = new RegExp(
-  `^(?<base>.*/media/${UUID}/[a-z0-9]+/[a-z0-9]+)/\\d+\\.(?:avif|webp|jpg)(?:[?#].*)?$`,
+  `^(?:https?://[^/]+)?(?<base>/media/${UUID}/[a-z0-9]+/[a-z0-9]+)/\\d+\\.(?:avif|webp|jpg)(?:[?#].*)?$`,
   'i',
 );
 
 export interface ParsedRendition {
-  /** Everything up to and including `{variant}` — no trailing slash. */
+  /** Path from `/media/{id}` up to and including `{variant}` — no domain, no trailing slash. */
   base: string;
 }
 
