@@ -6,6 +6,7 @@
   "blocks": [
     {
       "_type": "hero",
+      "_labId": "aab5a368-5a37-4a79-9e5b-47636f619be8",
       "image": "/hero.jpg",
       "imageAlt": "Lee & Stires"
     }

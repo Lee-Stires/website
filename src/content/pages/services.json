@@ -6,6 +6,7 @@
   "blocks": [
     {
       "_type": "services",
+      "_labId": "f63f9df5-14b8-417f-9521-9ecbe5b59187",
       "services": [
         {
           "name": "Site Clearing & Demolition",
@@ -29,6 +30,7 @@
     },
     {
       "_type": "list",
+      "_labId": "578efa75-c66b-408f-923d-1e0f7ce99dfb",
       "title": "Specialty Services",
       "description": "Specialty services can be provided upon request. These services include but are not limited to the following:",
       "items": [

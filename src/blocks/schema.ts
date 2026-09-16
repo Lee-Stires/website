@@ -11,6 +11,7 @@ import { z } from 'astro/zod';
 const heroBlock = z
   .object({
     _type: z.literal('hero'),
+    _labId: z.string().meta({ hidden: true, format: 'uuid' }),
     image: z.string(),
     imageAlt: z.string(),
   })
@@ -19,6 +20,7 @@ const heroBlock = z
 const textBlock = z
   .object({
     _type: z.literal('text'),
+    _labId: z.string().meta({ hidden: true, format: 'uuid' }),
     // Rich text authored in the Lab editor. Stored as Markdown; supports
     // paragraphs plus inline bold, italic, and links.
     body: z.string().meta({ format: 'markdown' }),
@@ -28,6 +30,7 @@ const textBlock = z
 const imageGroupBlock = z
   .object({
     _type: z.literal('imageGroup'),
+    _labId: z.string().meta({ hidden: true, format: 'uuid' }),
     images: z.array(
       z.object({
         image: z.string(),
@@ -40,6 +43,7 @@ const imageGroupBlock = z
 const servicesBlock = z
   .object({
     _type: z.literal('services'),
+    _labId: z.string().meta({ hidden: true, format: 'uuid' }),
     services: z.array(
       z.object({
         name: z.string(),
@@ -54,6 +58,7 @@ const servicesBlock = z
 const listBlock = z
   .object({
     _type: z.literal('list'),
+    _labId: z.string().meta({ hidden: true, format: 'uuid' }),
     title: z.string(),
     description: z.string(),
     items: z.array(z.string()),
@@ -63,6 +68,7 @@ const listBlock = z
 const galleryBlock = z
   .object({
     _type: z.literal('gallery'),
+    _labId: z.string().meta({ hidden: true, format: 'uuid' }),
     series: z.array(
       z.object({
         id: z.string(),
@@ -81,6 +87,7 @@ const galleryBlock = z
 const contactBlock = z
   .object({
     _type: z.literal('contact'),
+    _labId: z.string().meta({ hidden: true, format: 'uuid' }),
     heading: z.string(),
     address: z.string(),
     phone: z.string(),
@@ -97,6 +104,7 @@ const contactBlock = z
 const careersBlock = z
   .object({
     _type: z.literal('careers'),
+    _labId: z.string().meta({ hidden: true, format: 'uuid' }),
     heading: z.string(),
     positions: z.array(z.string()),
     applicationFile: z

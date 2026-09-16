@@ -12,6 +12,10 @@ const { blocks }: Props = Astro.props;
 {
   blocks.map((block) => {
     const Component = registry[block._type];
-    return <Component {...block} />;
+    return (
+      <div data-lab-id={block._labId ?? undefined} data-lab-type={block._type}>
+        <Component {...block} />
+      </div>
+    );
   })
 }
