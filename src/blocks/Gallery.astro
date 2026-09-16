@@ -176,7 +176,7 @@ const { series }: Props = Astro.props;
 </div>
 
 <script>
-  import { getR2Url } from '@/lib/utils/image';
+  import { R2_PROXY_PATH, getR2Url } from '@/lib/utils/image';
   import { parseRendition } from '@/lib/rendition';
   import { GALLERY_IMAGE } from './media';
 
@@ -194,7 +194,9 @@ const { series }: Props = Astro.props;
 
   function lightboxSrc(image: string): string {
     const parsed = parseRendition(image);
-    return parsed ? `${parsed.base}/${lightboxWidth}.jpg` : getR2Url(image);
+    return parsed
+      ? `${R2_PROXY_PATH}${parsed.base}/${lightboxWidth}.jpg`
+      : getR2Url(image);
   }
 
   const dataEl = document.getElementById('gallery-data');

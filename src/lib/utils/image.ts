@@ -1,11 +1,11 @@
+export const R2_PROXY_PATH = '/api/image';
+
 export function getR2Url(path: string): string {
   if (/^https?:\/\//i.test(path)) return path;
 
-  const baseUrl = import.meta.env.PUBLIC_R2_URL as string;
-
   const cleanPath = path.startsWith('/') ? path.slice(1) : path;
 
-  return `${baseUrl}/${cleanPath}`;
+  return `${R2_PROXY_PATH}/${cleanPath}`;
 }
 
 const MIME_TYPES: Record<string, string> = {

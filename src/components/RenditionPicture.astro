@@ -1,5 +1,5 @@
 ---
-import { getR2ImageType, getR2Url } from '@/lib/utils/image';
+import { R2_PROXY_PATH, getR2ImageType, getR2Url } from '@/lib/utils/image';
 import { parseRendition, renditionSrcset } from '@/lib/rendition';
 
 interface Props {
@@ -33,7 +33,9 @@ const widthList = [...new Set(widths)].sort((a, b) => a - b);
 const maxWidth = widthList[widthList.length - 1] ?? width;
 
 const sourceFormats = [...formats.filter((f) => f !== 'jpg'), 'jpg'];
-const imgSrc = parsed ? `${parsed.base}/${maxWidth}.jpg` : getR2Url(src);
+const imgSrc = parsed
+  ? `${R2_PROXY_PATH}${parsed.base}/${maxWidth}.jpg`
+  : getR2Url(src);
 const fallbackType = parsed ? undefined : getR2ImageType(src);
 ---
 
@@ -43,7 +45,11 @@ const fallbackType = parsed ? undefined : getR2ImageType(src);
       ? sourceFormats.map((format) => (
           <source
             type={`image/${format === 'jpg' ? 'jpeg' : format}`}
-            srcset={renditionSrcset(parsed.base, widthList, format)}
+            srcset={renditionSrcset(
+              `${R2_PROXY_PATH}${parsed.base}`,
+              widthList,
+              format,
+            )}
             sizes={sizes}
           />
         ))
