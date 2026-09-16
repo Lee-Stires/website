@@ -1,0 +1,12 @@
+---
+import { getEntry } from 'astro:content';
+import BlockRenderer from '@/blocks/BlockRenderer.astro';
+import { Layout } from '@/layouts';
+
+const page = await getEntry('pages', 'terms');
+if (!page) throw new Error('Missing content: src/content/pages/terms.json');
+---
+
+<Layout title={page.data.title} description={page.data.description}>
+  <BlockRenderer blocks={page.data.blocks} />
+</Layout>
