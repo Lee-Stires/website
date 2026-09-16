@@ -1,4 +1,4 @@
-export const R2_PROXY_PATH = '/api/image';
+export const R2_PROXY_PATH = '/assets';
 
 export function getR2Url(path: string): string {
   if (/^https?:\/\//i.test(path)) return path;

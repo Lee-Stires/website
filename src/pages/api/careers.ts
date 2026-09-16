@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { Resend } from 'resend';
+import { R2_PROXY_PATH } from '@/lib/utils/image';
 
 export const prerender = false;
 
@@ -59,7 +60,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       }),
     );
 
-    fileUrl = `${import.meta.env.PUBLIC_R2_URL}/${key}`;
+    fileUrl = `${new URL(request.url).origin}${R2_PROXY_PATH}/${key}`;
   }
 
   const resend = new Resend(import.meta.env.RESEND_API_KEY);

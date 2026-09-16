@@ -13,10 +13,8 @@ const s3 = new S3Client({
 });
 
 export const GET: APIRoute = async ({ params }) => {
-  let key = params.path;
+  const key = params.path;
   if (!key) return new Response('Not found', { status: 404 });
-
-  key = key.replace(/^image\//, '');
 
   let object;
   try {
