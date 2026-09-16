@@ -15,12 +15,31 @@ const { bodyClass, ...restProps }: Props = Astro.props;
     <SEO {...restProps} />
     <slot name="head" />
 
-    <script
-      defer
-      src="https://analytics.phxlab.io/script.js"
-      data-website-id="16e482db-e399-4819-b49d-06a2185580a8"></script>
+    <script>
+      import { isEmbeddedInLab } from '@/lib/lab-bridge';
+
+      if (!isEmbeddedInLab()) {
+        const script = document.createElement('script');
+        script.defer = true;
+        script.src = 'https://analytics.phxlab.io/script.js';
+        script.dataset.websiteId = '16e482db-e399-4819-b49d-06a2185580a8';
+        document.head.appendChild(script);
+      }
+    </script>
   </head>
   <body class={bodyClass}>
     <slot />
+
+    <style is:global>
+      [data-lab-selected] {
+        outline: 2px solid #2563eb;
+        outline-offset: -2px;
+      }
+    </style>
+    <script>
+      import { initLabBridge } from '@/lib/lab-bridge';
+
+      initLabBridge();
+    </script>
   </body>
 </html>

@@ -8,6 +8,11 @@
           "type": "string",
           "const": "hero"
         },
+        "_labId": {
+          "type": "string",
+          "hidden": true,
+          "format": "uuid"
+        },
         "image": {
           "type": "string"
         },
@@ -17,6 +22,7 @@
       },
       "required": [
         "_type",
+        "_labId",
         "image",
         "imageAlt"
       ],
@@ -30,6 +36,11 @@
           "type": "string",
           "const": "text"
         },
+        "_labId": {
+          "type": "string",
+          "hidden": true,
+          "format": "uuid"
+        },
         "body": {
           "type": "string",
           "format": "markdown"
@@ -37,6 +48,7 @@
       },
       "required": [
         "_type",
+        "_labId",
         "body"
       ],
       "additionalProperties": false,
@@ -48,6 +60,11 @@
         "_type": {
           "type": "string",
           "const": "imageGroup"
+        },
+        "_labId": {
+          "type": "string",
+          "hidden": true,
+          "format": "uuid"
         },
         "images": {
           "type": "array",
@@ -71,6 +88,7 @@
       },
       "required": [
         "_type",
+        "_labId",
         "images"
       ],
       "additionalProperties": false,
@@ -82,6 +100,11 @@
         "_type": {
           "type": "string",
           "const": "services"
+        },
+        "_labId": {
+          "type": "string",
+          "hidden": true,
+          "format": "uuid"
         },
         "services": {
           "type": "array",
@@ -113,6 +136,7 @@
       },
       "required": [
         "_type",
+        "_labId",
         "services"
       ],
       "additionalProperties": false,
@@ -124,6 +148,11 @@
         "_type": {
           "type": "string",
           "const": "list"
+        },
+        "_labId": {
+          "type": "string",
+          "hidden": true,
+          "format": "uuid"
         },
         "title": {
           "type": "string"
@@ -140,6 +169,7 @@
       },
       "required": [
         "_type",
+        "_labId",
         "title",
         "description",
         "items"
@@ -153,6 +183,11 @@
         "_type": {
           "type": "string",
           "const": "gallery"
+        },
+        "_labId": {
+          "type": "string",
+          "hidden": true,
+          "format": "uuid"
         },
         "series": {
           "type": "array",
@@ -196,6 +231,7 @@
       },
       "required": [
         "_type",
+        "_labId",
         "series"
       ],
       "additionalProperties": false,
@@ -207,6 +243,11 @@
         "_type": {
           "type": "string",
           "const": "contact"
+        },
+        "_labId": {
+          "type": "string",
+          "hidden": true,
+          "format": "uuid"
         },
         "heading": {
           "type": "string"
@@ -242,6 +283,7 @@
       },
       "required": [
         "_type",
+        "_labId",
         "heading",
         "address",
         "phone",
@@ -257,6 +299,11 @@
         "_type": {
           "type": "string",
           "const": "careers"
+        },
+        "_labId": {
+          "type": "string",
+          "hidden": true,
+          "format": "uuid"
         },
         "heading": {
           "type": "string"
@@ -275,6 +322,7 @@
       },
       "required": [
         "_type",
+        "_labId",
         "heading",
         "positions",
         "applicationFile"
