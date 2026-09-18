@@ -1,0 +1,4 @@
+# ads.txt — https://iabtechlab.com/ads-txt/
+# Lee & Stires does not currently sell programmatic ad inventory. No
+# authorized sellers are declared. Add entries here if/when this site
+# enrolls with an ad network.

@@ -1,0 +1,7 @@
+# ai.txt
+# Permissions for AI training/crawling on lee-stires.com.
+# This is a public marketing site; content and images may be used for AI
+# search, indexing, and training.
+
+User-Agent: *
+Allow: /

@@ -1,0 +1,13 @@
+/* TEAM */
+Development: Nico Plyley
+Contact: nico [at] phoenixtechlab.com
+From: Phoenix, AZ
+
+/* SITE */
+Last update: 2026/09/18
+Language: English
+Doctype: HTML5
+IDE: WebStorm
+Standards: HTML5, CSS3
+Components: Astro, Tailwind CSS
+Software: Astro

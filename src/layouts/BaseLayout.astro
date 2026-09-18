@@ -18,11 +18,12 @@ const { bodyClass, ...restProps }: Props = Astro.props;
     <script>
       import { isEmbeddedInLab } from '@/lib/lab-bridge';
 
-      if (!isEmbeddedInLab()) {
+      const websiteId = import.meta.env.PUBLIC_ANALYTICS_WEBSITE_ID;
+      if (websiteId && !isEmbeddedInLab()) {
         const script = document.createElement('script');
         script.defer = true;
         script.src = 'https://analytics.phxlab.io/script.js';
-        script.dataset.websiteId = '16e482db-e399-4819-b49d-06a2185580a8';
+        script.dataset.websiteId = websiteId;
         document.head.appendChild(script);
       }
     </script>

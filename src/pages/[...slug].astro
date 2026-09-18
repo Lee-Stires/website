@@ -15,6 +15,13 @@ if (!page) {
 <Layout
   title={page ? page.data.title : 'Page Not Found'}
   description={page?.data.description}
+  canonical={page?.data.canonical}
+  noindex={page?.data.noindex}
+  ogTitle={page?.data.ogTitle}
+  ogDescription={page?.data.ogDescription}
+  ogType={page?.data.ogType}
+  ogImage={page?.data.ogImage}
+  ogImageAlt={page?.data.ogImageAlt}
 >
   {page ? <BlockRenderer blocks={page.data.blocks} /> : <NotFound />}
 </Layout>
