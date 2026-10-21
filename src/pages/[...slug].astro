@@ -1,8 +1,10 @@
 ---
 import { getEntry } from 'astro:content';
 import BlockRenderer from '@/blocks/BlockRenderer.astro';
-import { NotFound } from '@/components';
+import { NotFound, SiteCredit } from '@/components';
 import { Layout } from '@/layouts';
+
+const CREDIT_SLUGS = new Set(['privacy', 'terms']);
 
 const { slug } = Astro.params;
 const page = slug ? await getEntry('pages', slug) : undefined;
@@ -24,4 +26,5 @@ if (!page) {
   ogImageAlt={page?.data.ogImageAlt}
 >
   {page ? <BlockRenderer blocks={page.data.blocks} /> : <NotFound />}
+  {page && CREDIT_SLUGS.has(page.data.slug) && <SiteCredit />}
 </Layout>

@@ -1,33 +1,37 @@
 ---
 import Container from '@/components/Container.astro';
+import footer from '@/globals/footer.json';
+
+const year = new Date().getFullYear();
 ---
 
 <footer class="mt-20">
   <Container>
-    <p class="text-center text-5xl font-bold">General Engineering Contractor</p>
+    <p class="text-center text-5xl font-bold">{footer.tagline}</p>
     <div class="mt-15 mb-4 flex flex-wrap items-center justify-around">
-      <p>CA LICENSE #288402</p>
-      <p>DIR #1000007695</p>
+      {footer.licenses.map((license) => <p>{license.text}</p>)}
     </div>
   </Container>
   <div class="w-full border-t-5 border-t-neutral-300">
     <Container
-      class="mt-10 flex flex-col justify-between text-center lg:flex-row"
+      class="flex flex-col justify-between gap-4 py-10 text-center lg:flex-row"
     >
-      <p>&copy; 2026 Lee &amp; Stires, Inc</p>
-      <div class="text-center">
-        <a
-          href="/privacy"
-          class="focus-visible:outline-primary focus-visible:outline-2 focus-visible:outline-offset-2"
-          >Privacy Policy</a
-        >
-        <span>|</span>
-        <a
-          href="/terms"
-          class="focus-visible:outline-primary focus-visible:outline-2 focus-visible:outline-offset-2"
-          >Terms &amp; Conditions</a
-        >
-      </div>
+      <p>&copy; {year} {footer.copyright}</p>
+      <ul class="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
+        {
+          footer.legalLinks.map((link, i) => (
+            <li class="flex items-center gap-x-3">
+              {i > 0 && <span aria-hidden="true">|</span>}
+              <a
+                href={link.href}
+                class="focus-visible:outline-primary focus-visible:outline-2 focus-visible:outline-offset-2"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </Container>
   </div>
 </footer>

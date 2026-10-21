@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "header": {
+      "type": "object",
+      "properties": {
+        "navLinks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "label",
+              "href"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "navLinks"
+      ],
+      "additionalProperties": false,
+      "title": "Header",
+      "description": "Site-wide navigation links"
+    },
+    "footer": {
+      "type": "object",
+      "properties": {
+        "tagline": {
+          "type": "string"
+        },
+        "licenses": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "text"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "copyright": {
+          "type": "string",
+          "description": "The current year is added automatically"
+        },
+        "legalLinks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "label",
+              "href"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "tagline",
+        "licenses",
+        "copyright",
+        "legalLinks"
+      ],
+      "additionalProperties": false,
+      "title": "Footer",
+      "description": "Site-wide footer content"
+    }
+  },
+  "required": [
+    "header",
+    "footer"
+  ],
+  "additionalProperties": false
+}
