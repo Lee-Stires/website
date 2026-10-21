@@ -3,6 +3,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { z } from 'astro/zod';
 
 import { blockSchema } from '../src/blocks/schema';
+import { globalsSchema } from '../src/globals/schema';
 
 function assertMediaFieldsValid(node: unknown, path = '$'): void {
   if (!node || typeof node !== 'object') return;
@@ -24,3 +25,7 @@ assertMediaFieldsValid(jsonSchema);
 
 mkdirSync('.lab', { recursive: true });
 writeFileSync('.lab/schema.json', JSON.stringify(jsonSchema, null, 2));
+writeFileSync(
+  '.lab/globals-schema.json',
+  JSON.stringify(z.toJSONSchema(globalsSchema), null, 2),
+);
